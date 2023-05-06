@@ -1,16 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;300;400;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/styles/reset.css"/>
     <link rel="stylesheet" href="/styles/home.css"/>
@@ -19,50 +12,23 @@
 <body>
     <nav class="nav-bar">
         <div class="nav-logo">
-            <img src="/assets/nav-logo.svg"/>
-            <div class="nav-title">
+            <img src = "/assets/logo.svg"/>
+            <div class="shaded-text nav-title">
                 <h1 class="part1">Pausa</h1>
                 <h1 class="part2">Brownies</h1>
             </div>
         </div>
 
-        <ul class="nav-items">
+        <ul class="shaded-text nav-items">
             <a><li class="nav-item">Home</li></a>
             <a><li class="nav-item">Cardápio</li></a>
             <a><li class="nav-item">Contato</li></a>
             <a><li class="nav-item">Sobre</li></a>
+            <a><li class="nav-item">LOGIN</li></a>
         </ul>
-
-        <div class="nav-login">
-           <a><img src="/assets/profile-icon.svg"/></a> 
-           <a><img src="/assets/login-icon.svg"/></a> 
-        </div>
-        
-        <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-            <i class="fa fa-bars"></i>
-        </label>
-    </nav> 
-
-    <div class="main-container">
-        <lottie-player src="https://lottie.host/93bcc426-fbe4-490c-9004-74e4273dda12/05Yv5CmR8w.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;" loop  autoplay></lottie-player>
+    </nav>
+    <div class="presentation-title">
+        <h1>EXPERIMENTE O SABOR QUE IRÁ MUDAR SUA VIDA</h1>
     </div>
-    <footer class="fixed-footer">
-        <a><img src="/assets/whatsapp-logo.svg"/></a> 
-        <div class="stock-products">
-            <div class="product">
-                <img src="/assets/cookie-icon.svg" /> 
-                <p>2</p>
-            </div>
-            <div class="product">
-                <img src="/assets/cookie-icon.svg" /> 
-                <p>2</p>
-            </div>
-            <div class="product">
-                <img src="/assets/cookie-icon.svg" /> 
-                <p>2</p>
-            </div>
-        </div>
-    </footer>
 </body>
 </html>
