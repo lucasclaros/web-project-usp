@@ -1,10 +1,3 @@
-body {
-    font-family: 'Lilita One', cursive;
-    height: 100vh;
-    background-color: #f1ded1;
-    user-select: none;
-}
-
 .presentation-title {
     height: 384px;
     display: flex;
