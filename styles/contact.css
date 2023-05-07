@@ -9,4 +9,31 @@ main {
 main .card-content {
     flex-direction: column;
     height: min(651px, 45vh);
+    padding: 41px 100px;
+}
+
+.contact-information {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 48px;
+    background-color: white;
+    width: min(1024px, 71vw);
+    height: min(160px, 18vh);
+    padding: 0 77px;
+    border: 1px solid black;
+    text-transform: uppercase;
+}
+
+.contact-information:first-child {
+    border-radius: 16px 16px 0 0;
+}
+
+.contact-information:last-child {
+    border-radius: 0 0 16px 16px;
+}
+
+.media-type {
+    margin-right: 30px;
 }
