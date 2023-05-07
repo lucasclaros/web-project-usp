@@ -128,17 +128,16 @@ body {
 }
 
 .step-list {
+    overflow: hidden;
     display: flex;
-    justify-content: center;
-    flex: 2;
+    justify-content: space-around;
+    width: 100%;
 }
 
 .step {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    height: 93px;
-    margin-left: 10px;
     font-size: 22px;
 }
 
@@ -169,7 +168,6 @@ body {
     justify-content: center;
     height: 100%;
     width: fit-content;
-    margin-right: 10px;
 }
 
 .girl1 {
@@ -191,15 +189,26 @@ body {
     justify-content: space-around;
 }
 
-.infra-imgs {
+#infra .card-header {
+    display: flex;
+    justify-content: space-around;
+}
+
+#infra .card-content {
+    display: flex;
+    justify-content: space-around;
+}
+
+.infra-imgs, .step {
     width: 17vw;
     height: 26vh;
-    padding: 15px;
+    margin: 35px 0;
 }
 
 #plus, #equal {
     width: min(90px, 10vw);
     height: min(90px, 25vh);
+    margin: 0 10px;
 }
 
 #products {
@@ -367,4 +376,29 @@ section#location.info-container {
 .hat img {
     width: min(160px, 15vw);
     height: min(160px, 30vw);
+}
+
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    justify-content: space-between;
+    height: 80px;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 8px 0px 8px 8px rgba(0, 0, 0, 0.25);
+    margin-bottom: 0px;
+}
+
+.footer-items {
+    display: flex;
+    width: 280px;
+    justify-content: space-between;
+}
+
+.footer-item {
+    display: flex;
+}
+
+.footer-compensator {
+    height: 80px;
 }
