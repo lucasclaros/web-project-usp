@@ -1,8 +1,5 @@
 .presentation-title {
     height: 384px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-image: url("/assets/background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -20,9 +17,6 @@
     border: 1px solid black;
     margin: 0 0 16px 1px;
     border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: #e7d0c5;
 }
 
@@ -43,16 +37,10 @@
 .step-number {
     flex: 2;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin-right: 10px;
 }
 
 .rounded-div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border: 3px solid black;
     border-radius: 50%;
     width: 40px;
@@ -62,28 +50,7 @@
 .step-desc {
     flex: 5;
     text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
     width: fit-content;
-}
-
-.girl1 {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#infra .card-header {
-    display: flex;
-    justify-content: space-around;
-}
-
-#infra .card-content {
-    display: flex;
-    justify-content: space-around;
 }
 
 .infra-imgs, .step {
@@ -98,46 +65,43 @@
     margin: 0 10px;
 }
 
-#products {
+#products .info-container {
     display: flex;
     flex-direction: column;
 }
 
-#products a div {
+.menu-button {
     margin-top: -40px;
 }
 
 .promo-card {
-    background-color: white;
-    border-radius: 16px;
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    border-radius: 16px;
     height: 35vh;
     width: 30vw;
     margin: 40px;
     border: 1px solid black;
+    background-color: white;
 }
 
-.promo-card-icon img {
+.promo-card-icon {
     width: 9vw;
     height: 15vh;
     margin-bottom: 20px;
 }
 
-.promo-card div:not(.promo-card-icon){
+.promo-card .styled-button1 {
     width: 22vw;
     height: 10vh;
     font-size: 40px;
 }
 
-.unfold img {
+.unfold {
     width: 9vw;
     height: 15vh;
 }
 
-.michael-img img {
+.michael-img {
     width: 360px;
     height: 466px;
 }
@@ -147,7 +111,7 @@
     padding: 40px 105px;
 }
 
-.feedback-imgs{
+.feedback-imgs {
     display: flex;
 }
 
@@ -163,6 +127,12 @@
     height: min(200px, 25vh);
 }
 
+/* 
+Width calc explanation: 
+    360px  from michael-img
+    50px   from margin-left
+    min(*) from customers-prints img above
+*/
 .customers-message {
     width: calc(360px + 50px + min(600px, 41.6vw)); 
     height: 130px;
@@ -170,7 +140,7 @@
     margin-top: 54px;
 }
 
-section#location.info-container {
+#location {
     background-color: #eff0d7;
 }
 
@@ -198,42 +168,33 @@ section#location.info-container {
 }
 
 .location-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 60px;
     height: 100%;
     width: 100%;
 }
 
 .map-message {
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
     font-size: 40px;
     text-align: center;
 }
 
-.map-message div:not(.hat) {
+.map-message div:first-child {
     width: min(472px, 40vw);
     height: min(280px, 31vh);
     line-height: min(80px, 7vw);
-    display: flex;
-    align-items: center;
 }
 
 .map {
     margin-right: 30px;
 }
 
-.map img, .map-message {
+.map, .map-message {
     width: min(568px, 39vw);
     height: min(368px, 40vh);
 }
 
-.hat img {
+.hat {
     width: min(160px, 15vw);
     height: min(160px, 30vw);
 }

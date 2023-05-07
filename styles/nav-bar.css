@@ -40,9 +40,6 @@
 
 .nav-item {
     background: #B86E4C;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border: 1px solid #000000;
     border-radius: 16px;
     width: 80px;
