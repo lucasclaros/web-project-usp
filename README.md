@@ -4,9 +4,12 @@
 - Paulo Henrique dos Santos Almeida - 12543926 
 
 ## Descrição
+
 Este projeto consiste no desenvolvimento do site de uma loja online especializada na venda de Brownies artesanais, e foi produzido visando aplicar os conceitos práticos da disciplina [SCC0219 - Introdução ao Desenvolvimento Web](https://uspdigital.usp.br/jupiterweb/obterDisciplina?sgldis=SCC0219).
 
-O design do projeto foi desenvolvido utilizando o editor gráfico online [Figma](https://www.figma.com/) para prototipagem das telas, e o front-end da aplicação com as linguagens HTML 5 e CSS 3.
+O design do projeto foi desenvolvido utilizando o editor gráfico online [Figma](https://www.figma.com/file/XGRnGMWEZVCLh8bxgKizsG/Pausa-Brownies?type=design&node-id=0-1&t=H95jZJzXORe0ZTdF-0) para prototipagem das telas, e o front-end da aplicação com as linguagens HTML 5 e CSS 3.
+
+
 ## Requisitos
 O sistema deve ser capaz de gerenciar dois tipos de usuários: cliente e administrador.
 
@@ -39,7 +42,7 @@ Administrador:
 ### Sitemap do Administrador
 
 
-## Comentários Aobre o Código
+## Comentários Sobre o Código
 
 ## Plano de Testes
 
@@ -47,4 +50,23 @@ Administrador:
 
 ## Procedimento de Execução
 
+### Milestone 1:
+
+Para acessar os mockups do projeto, acesse o [link](https://www.figma.com/file/XGRnGMWEZVCLh8bxgKizsG/Pausa-Brownies?type=design&node-id=0-1&t=H95jZJzXORe0ZTdF-0) do Figma contendo as telas prototipadas do sistema.
+
+
+Para acessar as telas funcionais siga os passos abaixo:
+
+
+1. Clone o repositório com o comando:
+
+```
+git clone https://github.com/lucasclaros/web-project-usp
+```
+
+2. Na pasta do projeto execute no navegador o arquivo:
+
+```
+./web-project-usp/pages/index.html
+```
 ## Comentários
