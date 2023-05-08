@@ -33,6 +33,7 @@ Administrador:
 ## Diagramas de Navegação
 ### Sitemap do Cliente
 
+A navegação do cliente considera também usuários externos não autenticados:
 
 <img src="assets/sitemap_client.png" alt="navigation diagram" width="700"/>
 
@@ -40,7 +41,9 @@ Administrador:
 [Link do Diagrama no Figma](https://www.figma.com/file/C6LpGyvgDh3yrcQmiUoOSD/PAUSA-BROWNIES?type=whiteboard&node-id=0-1&t=b30D0GP500lRbtIh-0)
 
 ### Sitemap do Administrador
+Para a navegação do administrador, será a mesma do cliente, com adição dos privilégios de controle:
 
+<img src="assets/sitemap_admin.png" alt="navigation diagram" width="300"/>
 
 ## Comentários Sobre o Código
 
