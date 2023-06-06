@@ -1,5 +1,5 @@
 import React from "react";
-import HomeSection from "../components/HomeSection";
+import InfoCards from "../../../components/InfoCards/InfoCards";
 import PromoCard from "./components/PromoCard";
 import { ReactComponent as RegisterIcon } from "./assets/register.svg";
 import { ReactComponent as LoginIcon } from "./assets/login.svg";
@@ -7,7 +7,7 @@ import { ReactComponent as CardPicker } from "./assets/card-picker.svg";
 
 const PromoSection = () => {
     return (
-        <HomeSection
+        <InfoCards
             header={"Quer visualizar nossas promoções?"}
             body={
                 <div className="centered-content">

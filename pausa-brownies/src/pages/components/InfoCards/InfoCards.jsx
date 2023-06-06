@@ -1,7 +1,7 @@
 import React from "react";
-import "./HomeSection.css";
+import "./InfoCards.css";
 
-const HomeSection = ({ header, body }) => {
+const InfoCards = ({ header, body }) => {
     return (
         <section className="centered-content info-section-container">
             <div className="card-wrapper">
@@ -12,4 +12,4 @@ const HomeSection = ({ header, body }) => {
     );
 };
 
-export default HomeSection;
+export default InfoCards;
