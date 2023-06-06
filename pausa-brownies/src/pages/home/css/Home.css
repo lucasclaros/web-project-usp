@@ -1,0 +1,13 @@
+.presentation-title {
+    height: 384px;
+    background-image: url("../assets/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.presentation-title h1 {
+    font-size: clamp(24px, 4vw, 40px);
+    text-align: center;
+    width: 597px;
+}

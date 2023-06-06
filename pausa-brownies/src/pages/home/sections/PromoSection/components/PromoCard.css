@@ -1,0 +1,15 @@
+.promo-card {
+    flex-direction: column;
+    border-radius: 16px;
+    height: 35vh;
+    width: clamp(100px, 30vw, 440px);
+    margin: 40px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.promo-card-icon {
+    width: 9vw;
+    height: 15vh;
+    margin-bottom: 20px;
+}
