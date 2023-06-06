@@ -1,0 +1,11 @@
+.contact-wrapper {
+    padding: 41px 100px;
+}
+
+.contact-information:first-child {
+    border-radius: 16px 16px 0 0;
+}
+
+.contact-information:last-child {
+    border-radius: 0 0 16px 16px;
+}

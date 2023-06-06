@@ -6,8 +6,8 @@ const Home = () => {
     return (
         <>
             <section id="presentation">
-                <div class="centered-content presentation-title">
-                    <h1 class="shaded-text">
+                <div className="centered-content presentation-title">
+                    <h1 className="shaded-text">
                         EXPERIMENTE O SABOR QUE IRÁ MUDAR SUA VIDA
                     </h1>
                 </div>

@@ -1,7 +1,7 @@
 import React from "react";
-import "./InfoCards.css";
+import "./InfoCard.css";
 
-const InfoCards = ({ header, body }) => {
+const InfoCard = ({ header, body }) => {
     return (
         <section className="centered-content info-section-container">
             <div className="card-wrapper">
@@ -12,4 +12,4 @@ const InfoCards = ({ header, body }) => {
     );
 };
 
-export default InfoCards;
+export default InfoCard;

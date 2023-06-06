@@ -1,0 +1,19 @@
+.contact-information {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: baseline;
+    font-size: clamp(1.5rem, 3vw, 3rem);
+    background-color: white;
+    width: min(1024px, 71vw);
+    height: min(160px, 18vh);
+    padding: 0 77px;
+    border: 1px solid black;
+    text-transform: uppercase;
+}
+
+.media-type {
+    margin-right: 60px;
+    width: 72px;
+    height: 72px;
+}
