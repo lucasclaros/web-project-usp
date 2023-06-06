@@ -5,6 +5,7 @@ import Navbar from "./pages/components/Navbar/Navbar";
 import Contact from "./pages/contact/Contact";
 import Menu from "./pages/menu/Menu";
 import Login from "./pages/login/Login";
+import Footer from "./pages/components/Footer/Footer";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                 <Route path="/menu" element={<Menu />} exact />
                 <Route path="/login" element={<Login />} exact />
             </Routes>
+            <Footer />
         </>
     );
 }

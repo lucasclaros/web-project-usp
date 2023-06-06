@@ -13,7 +13,7 @@ body {
     user-select: none;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    overflow-y: scroll;
 }
 
 .centered-content {
