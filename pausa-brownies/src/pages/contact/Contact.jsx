@@ -7,31 +7,25 @@ import ContactInfo from "./components/ContactInfo";
 
 const Contact = () => {
     return (
-        <div
-            style={{
-                margin: "36px 108px",
-            }}
-        >
-            <InfoCard
-                header={"Fale conosco!"}
-                body={
-                    <div className="contact-wrapper">
-                        <ContactInfo
-                            icon={WhatsAppIcon}
-                            contatct="Whatsapp: (21) 96911-5004"
-                        />
-                        <ContactInfo
-                            icon={TelegramIcon}
-                            contatct="Telegram: @pausa109"
-                        />
-                        <ContactInfo
-                            icon={TelephoneIcon}
-                            contatct="Celular: (21) 96911-5004"
-                        />
-                    </div>
-                }
-            />
-        </div>
+        <InfoCard
+            header={"Fale conosco!"}
+            body={
+                <div className="contact-wrapper">
+                    <ContactInfo
+                        icon={WhatsAppIcon}
+                        contatct="Whatsapp: (21) 96911-5004"
+                    />
+                    <ContactInfo
+                        icon={TelegramIcon}
+                        contatct="Telegram: @pausa109"
+                    />
+                    <ContactInfo
+                        icon={TelephoneIcon}
+                        contatct="Celular: (21) 96911-5004"
+                    />
+                </div>
+            }
+        />
     );
 };
 
