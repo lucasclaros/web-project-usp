@@ -1,6 +1,7 @@
 import React from "react";
 import "./css/Home.css";
 import PromoSection from "./sections/PromoSection/PromoSection";
+import InfraSection from "./sections/InfraSection/InfraSection";
 
 const Home = () => {
     return (
@@ -12,7 +13,7 @@ const Home = () => {
                     </h1>
                 </div>
             </section>
-            {/* <InfraSection /> */}
+            <InfraSection />
             <PromoSection />
         </>
     );
