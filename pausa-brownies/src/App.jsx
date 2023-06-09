@@ -6,6 +6,7 @@ import Contact from "./pages/contact/Contact";
 import Menu from "./pages/menu/Menu";
 import Login from "./pages/login/Login";
 import Footer from "./pages/components/Footer/Footer";
+import Register from "./pages/register/Register";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                 <Route path="/contact" element={<Contact />} exact />
                 <Route path="/menu" element={<Menu />} exact />
                 <Route path="/login" element={<Login />} exact />
+                <Route path="/register" element={<Register />} exact />
             </Routes>
             {/* Navbar compensation */}
             <div style={{ height: "80px" }}></div>
