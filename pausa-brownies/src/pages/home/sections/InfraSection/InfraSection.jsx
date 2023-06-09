@@ -13,7 +13,7 @@ const InfraSection = () => {
     return (
         <InfoCard
             header={
-                <div class="step-list">
+                <div className="step-list">
                     <Step number="1" text="Ingredientes de primeira" />
                     <Step number="2" text="Entrega agilizada" />
                     <Step
