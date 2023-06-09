@@ -11,8 +11,6 @@ function App() {
     return (
         <>
             <Navbar />
-            {/* Navbar compensation */}
-            <div style={{ height: "80px" }}></div>
             <Routes>
                 <Route path="/" element={<Home />} exact />
                 <Route path="/about" element={<About />} exact />
@@ -20,6 +18,8 @@ function App() {
                 <Route path="/menu" element={<Menu />} exact />
                 <Route path="/login" element={<Login />} exact />
             </Routes>
+            {/* Navbar compensation */}
+            <div style={{ height: "80px" }}></div>
             <Footer />
         </>
     );

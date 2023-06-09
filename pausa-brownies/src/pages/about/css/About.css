@@ -1,7 +1,6 @@
 .about-desc {
-    font-size: 48px;
-    line-height: 55px;
+    font-size: clamp(1.5rem, 1rem + 2vw, 3rem);
     padding: 40px;
-    margin: 84px 0;
+    margin: 40px;
     text-align: center;
 }
