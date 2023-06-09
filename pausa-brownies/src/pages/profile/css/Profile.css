@@ -1,0 +1,52 @@
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-content-wrapper {
+    margin: 40px;
+}
+
+.profile-content {
+    flex-direction: column;
+    background-color: white;
+    border-radius: 16px;
+    border: 1px solid black;
+}
+
+.profile-main {
+    margin: 20px;
+}
+
+.profile-image {
+    margin-right: 1.5em;
+}
+
+.profile-options {
+    margin-bottom: 20px;
+}
+
+.user-flag {
+    margin: 0 auto;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    color: green;
+}
+
+.admin-flag {
+    margin: 0 auto;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    color: red;
+}
+
+.profile-options .pausa-button {
+    background-color: red;
+}
