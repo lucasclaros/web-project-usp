@@ -3,6 +3,7 @@ import "./css/Home.css";
 import PromoSection from "./sections/PromoSection/PromoSection";
 import InfraSection from "./sections/InfraSection/InfraSection";
 import FeedbackSection from "./sections/FeedbackSection/FeedbackSection";
+import LocationSection from "./sections/LocationSection/LocationSection";
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
             <InfraSection />
             <PromoSection />
             <FeedbackSection />
+            <LocationSection />
         </>
     );
 };

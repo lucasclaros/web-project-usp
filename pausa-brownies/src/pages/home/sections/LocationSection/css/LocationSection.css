@@ -1,0 +1,38 @@
+#location {
+    background-color: #eff0d7;
+}
+
+.location-address {
+    background-color: #70af73;
+    margin: 0 12px;
+}
+
+#location .card-body {
+    background-color: #f0f2c4;
+    flex-direction: column;
+    padding: 40px;
+}
+
+.location-content {
+    padding: 30px;
+}
+
+.map-message {
+    flex-direction: column;
+    font-size: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+    text-align: center;
+    flex: 1;
+}
+
+.map-message div:first-child {
+    margin-bottom: 30px;
+}
+
+.map {
+    margin-right: 30px;
+}
+
+.hat {
+    width: min(80px, 30vw);
+    height: min(80px, 30vw);
+}
