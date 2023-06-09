@@ -1,13 +1,13 @@
-.info-section-container {
+.login-wrapper .info-section-container {
     border: none;
     background-color: transparent;
 }
 
-.card-header {
+.login-wrapper .card-header {
     background-color: #e7d0c5;
 }
 
-.card-body {
+.login-wrapper .card-body {
     background-color: white;
 }
 
@@ -16,6 +16,7 @@
     align-items: center;
     flex-direction: column;
     width: 100%;
+    background-color: white;
 }
 
 .fields-wrapper {

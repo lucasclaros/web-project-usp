@@ -5,9 +5,9 @@ const PausaTextField = ({ label, placeholder, inputType }) => {
     return (
         <>
             <div className="input-wrapper">
-                <label for="input">{label}</label>
+                <label htmlFor={label}>{label}</label>
                 <input
-                    id="input"
+                    id={label}
                     type={inputType}
                     placeholder={placeholder}
                     required

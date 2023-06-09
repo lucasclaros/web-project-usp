@@ -11,16 +11,16 @@ const LocationSection = () => {
                 header={"Localização"}
                 body={
                     <>
-                        <div class="centered-content location-content">
+                        <div className="centered-content location-content">
                             <Map className="map" />
-                            <div class="centered-content map-message">
-                                <div class="centered-content shaded-text">
+                            <div className="centered-content map-message">
+                                <div className="centered-content shaded-text">
                                     É aqui que fazemos nossa mágica!
                                 </div>
                                 <Hat className="hat" />
                             </div>
                         </div>
-                        <div class="text-box location-address">
+                        <div className="text-box location-address">
                             Rua Dr Carlos de Camargo Salles, 360 - Jardim
                             Lutfalla, São Carlos / SP
                         </div>

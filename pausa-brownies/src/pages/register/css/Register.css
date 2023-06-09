@@ -1,4 +1,17 @@
-.login-content {
+.register-wrapper .info-section-container {
+    border: none;
+    background-color: transparent;
+}
+
+.register-wrapper .card-header {
+    background-color: #e7d0c5;
+}
+
+.register-wrapper .card-body {
+    background-color: white;
+}
+
+.register-content {
     display: flex;
     align-items: center;
     flex-direction: column;
