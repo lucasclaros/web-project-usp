@@ -4,3 +4,9 @@
     margin: 40px;
     text-align: center;
 }
+
+@media screen and (max-width: 960px) {
+    .about-desc {
+        margin: 20px;
+    }
+}

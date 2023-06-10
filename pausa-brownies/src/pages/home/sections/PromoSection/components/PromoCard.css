@@ -9,7 +9,15 @@
 }
 
 .promo-card-icon {
-    width: 9vw;
-    height: 15vh;
+    width: min(50%, 200px);
+    height: min(50%, 200px);
     margin-bottom: 20px;
+}
+
+@media screen and (max-width: 960px) {
+    .promo-card,
+    .promo-card .pausa-button {
+        width: 80%;
+        margin: 20px;
+    }
 }

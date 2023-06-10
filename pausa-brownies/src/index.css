@@ -34,9 +34,10 @@ body {
     justify-content: center;
     border: 1px solid black;
     border-radius: 16px;
-    font-size: 48px;
+    font-size: clamp(2rem, 1rem + 3vw, 3rem);
+    width: 90%;
     text-align: center;
-    padding: 37px 45px;
+    padding: 10px 30px;
     overflow: hidden;
 }
 

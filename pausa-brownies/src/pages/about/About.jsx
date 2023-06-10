@@ -1,7 +1,6 @@
 import React from "react";
 import InfoCard from "../components/InfoCards/InfoCard";
 import "./css/About.css";
-import PausaLogo from "../components/Logo/Logo";
 
 const About = () => {
     return (
