@@ -71,13 +71,8 @@ const Login = () => {
                         </div>
                         <a className="forgot-password">Esqueceu sua senha?</a>
                         <p className="register-message">
-                            Não tem cadastro? Faça clicando
-                            <a
-                                href="/register"
-                                onClick={(e) => e.preventDefault()}
-                            >
-                                aqui
-                            </a>
+                            Não tem cadastro? Faça clicando{" "}
+                            <a href="/register">aqui</a>
                         </p>
                     </div>
                 }

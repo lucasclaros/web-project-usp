@@ -64,7 +64,7 @@ const Register = () => {
                                 />
                                 <PausaTextField
                                     name={"phone"}
-                                    inputType={"tel"}
+                                    inputType={"number"}
                                     label="Telefone"
                                     placeholder="(99) 99999-9999"
                                     handleChange={handleInputChange}

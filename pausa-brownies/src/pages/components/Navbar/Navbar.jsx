@@ -20,7 +20,7 @@ const Navbar = () => {
                     <NavbarItem path="/about" content="Sobre" />
                     <NavbarItem
                         isLogin={true}
-                        path={user ? "/profile" : "/login"}
+                        path={user ? "/profileu" : "/login"}
                         content={
                             <div
                                 className="centered-content"

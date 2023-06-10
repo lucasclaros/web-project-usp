@@ -13,14 +13,21 @@
     background-color: white;
     border-radius: 16px;
     border: 1px solid black;
+    width: 100%;
 }
 
 .profile-main {
     margin: 20px;
+    padding: 0 60px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .profile-image {
-    margin-right: 1.5em;
+    margin: 20px 0;
+    justify-content: center;
+    display: flex;
 }
 
 .profile-options {

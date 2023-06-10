@@ -9,10 +9,8 @@ const NavbarItem = ({ path, content, isLogin }) => {
         : "navbar-item-normal shaded-text";
 
     return (
-        <Link to={path}>
-            <div className={`navbar-item centered-content ${itemClass}`}>
-                {content}
-            </div>
+        <Link className={`navbar-item centered-content ${itemClass}`} to={path}>
+            {content}
         </Link>
     );
 };

@@ -1,39 +1,63 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import "./css/ProfileUser.css";
 import InfoCard from "../components/InfoCards/InfoCard";
 import PausaTextField from "../components/TextField/PausaTextField";
 import PausaButton from "../components/Buttons/PausaButton/PausaButton";
 import { ReactComponent as ProfileIcon } from "./assets/profileu.svg";
-
+import { useNavigate } from "react-router-dom";
+import UserContext from "../../context/UserContext";
 
 const ProfileUser = () => {
+    const navigate = useNavigate();
+    useEffect(() => {
+        const localUser = JSON.parse(localStorage.getItem("user"));
+        if (!localUser) {
+            navigate("/login");
+        }
+    }, []);
+
+    const { user, setUser } = useContext(UserContext);
+
+    const handleLogout = () => {
+        localStorage.removeItem("user");
+        setUser(null);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        navigate("/login");
+    };
+
     return (
         <div className="profile-wrapper">
             <InfoCard
                 header={
                     <div className="profile-header">
-                        <h1>Perfil    </h1>
-                        <div className="user-flag" title="Admin">  U  </div>
+                        Perfil
+                        <div className="user-flag" title="Admin">
+                            {" "}
+                            U{" "}
+                        </div>
                     </div>
                 }
                 body={
                     <div className="profile-content-wrapper centered-content">
                         <div className="profile-content centered-content">
-                            <div className="profile-main centered-content">
+                            <div className="profile-main">
                                 <div className="profile-image">
                                     <ProfileIcon />
                                 </div>
                                 <div className="profile-info">
                                     <PausaTextField
-                                        value={"Pausa Brownies"}
+                                        value={user ? user.name : ""}
+                                        disabled={true}
                                         label={"Nome"}
                                     />
                                     <PausaTextField
-                                        value={"pausa@brownies.com"}
+                                        value={user ? user.email : ""}
+                                        disabled={true}
                                         label={"E-mail"}
                                     />
                                     <PausaTextField
-                                        value={"(99) 99999-9999"}
+                                        value={user ? user.phone : ""}
+                                        disabled={true}
                                         label={"Telefone"}
                                     />
                                 </div>
@@ -41,6 +65,7 @@ const ProfileUser = () => {
                             <div className="profile-options">
                                 <PausaButton
                                     buttonText={"Excluir perfil"}
+                                    onClick={handleLogout}
                                 />
                             </div>
                         </div>
