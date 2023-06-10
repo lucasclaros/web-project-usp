@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import NavbarItem from "./components/NavbarItem";
 import PausaLogo from "../Logo/Logo";
 import { ReactComponent as ProfileIcon } from "./assets/woman.svg";
 import "./Navbar.css";
+import UserContext from "../../../context/UserContext";
 
 const Navbar = () => {
+    const { user } = useContext(UserContext);
+    useEffect(() => {}, [user]);
+
     return (
         <header>
             <nav className="nav-bar">
@@ -16,7 +20,7 @@ const Navbar = () => {
                     <NavbarItem path="/about" content="Sobre" />
                     <NavbarItem
                         isLogin={true}
-                        path="/login"
+                        path={user ? "/profile" : "/login"}
                         content={
                             <div
                                 className="centered-content"
@@ -26,7 +30,7 @@ const Navbar = () => {
                                 }}
                             >
                                 <ProfileIcon />
-                                Login
+                                {user ? "Perfil" : "Login"}
                             </div>
                         }
                     />
