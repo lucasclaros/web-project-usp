@@ -1,19 +1,19 @@
 import React from "react";
-import "./css/Profile.css";
+import "./css/ProfileUser.css";
 import InfoCard from "../components/InfoCards/InfoCard";
 import PausaTextField from "../components/TextField/PausaTextField";
 import PausaButton from "../components/Buttons/PausaButton/PausaButton";
-import { ReactComponent as ProfileIcon } from "./assets/profile.svg";
+import { ReactComponent as ProfileIcon } from "./assets/profileu.svg";
 
 
-const Profile = () => {
+const ProfileUser = () => {
     return (
         <div className="profile-wrapper">
             <InfoCard
                 header={
                     <div className="profile-header">
                         <h1>Perfil    </h1>
-                        <div className="admin-flag" title="Admin">  A  </div>
+                        <div className="user-flag" title="Admin">  U  </div>
                     </div>
                 }
                 body={
@@ -51,4 +51,4 @@ const Profile = () => {
     );
 };
 
-export default Profile;
+export default ProfileUser;
