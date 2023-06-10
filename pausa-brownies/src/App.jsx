@@ -7,10 +7,14 @@ import Menu from "./pages/menu/Menu";
 import Login from "./pages/login/Login";
 import Footer from "./pages/components/Footer/Footer";
 import Register from "./pages/register/Register";
+import UserContext from "./context/UserContext";
+import { useState } from "react";
 
 function App() {
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+
     return (
-        <>
+        <UserContext.Provider value={{ user, setUser }}>
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} exact />
@@ -23,7 +27,7 @@ function App() {
             {/* Navbar compensation */}
             <div style={{ height: "80px" }}></div>
             <Footer />
-        </>
+        </UserContext.Provider>
     );
 }
 
