@@ -11,6 +11,11 @@
     background-color: white;
 }
 
+.register-message {
+    text-align: center;
+    margin: 10px;
+}
+
 .register-content {
     display: flex;
     align-items: center;

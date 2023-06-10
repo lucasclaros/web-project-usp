@@ -22,7 +22,7 @@ function App() {
                 <Route path="/" element={<Home />} exact />
                 <Route path="/about" element={<About />} exact />
                 <Route path="/contact" element={<Contact />} exact />
-                <Route path="/menu" element={<Menu />} exact />
+                {/* <Route path="/menu" element={<Menu />} exact /> */}
                 <Route path="/login" element={<Login />} exact />
                 <Route path="/register" element={<Register />} exact />
                 <Route path="/profileu" element={<ProfileUser />} exact />

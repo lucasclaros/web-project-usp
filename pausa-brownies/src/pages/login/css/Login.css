@@ -17,6 +17,7 @@
     flex-direction: column;
     width: 100%;
     background-color: white;
+    margin: 10px;
 }
 
 .fields-wrapper {

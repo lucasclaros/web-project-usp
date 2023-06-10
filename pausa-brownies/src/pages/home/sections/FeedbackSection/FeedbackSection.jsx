@@ -4,15 +4,19 @@ import "./css/FeedbackSection.css";
 import michaleImg from "./assets/michael.png";
 import feedback1 from "./assets/feedback1.png";
 import feedback2 from "./assets/feedback2.png";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 const FeedbackSection = () => {
+    const isMobile = useMediaQuery("(max-width: 960px)");
     return (
         <InfoCard
             header={"Relato dos nossos clientes"}
             body={
                 <div className="feedbacks">
                     <div className="feedback-imgs">
-                        <img className="michael-img" src={michaleImg} />
+                        {!isMobile && (
+                            <img className="michael-img" src={michaleImg} />
+                        )}
                         <div className="customers-prints">
                             <img src={feedback1} />
                             <img src={feedback2} />
