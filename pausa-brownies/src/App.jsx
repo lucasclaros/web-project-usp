@@ -11,6 +11,7 @@ import ProfileUser from "./pages/profileu/ProfileUser";
 import ProfileAdmin from "./pages/profilea/ProfileAdmin";
 import UserContext from "./context/UserContext";
 import Description from "./pages/description/Description";
+import Management from "./pages/management/Management";
 import { useState } from "react";
 
 function App() {
@@ -23,12 +24,13 @@ function App() {
                 <Route path="/" element={<Home />} exact />
                 <Route path="/about" element={<About />} exact />
                 <Route path="/contact" element={<Contact />} exact />
-                {/* <Route path="/menu" element={<Menu />} exact /> */}
+                <Route path="/menu" element={<Menu />} exact />
                 <Route path="/login" element={<Login />} exact />
                 <Route path="/register" element={<Register />} exact />
                 <Route path="/profileu" element={<ProfileUser />} exact />
                 <Route path="/profilea" element={<ProfileAdmin />} exact />
                 <Route path="/description" element={<Description />} exact />
+                <Route path="/management" element={<Management />} exact />
 
             </Routes>
             {/* Navbar compensation */}

@@ -51,7 +51,7 @@ const Navbar = () => {
                 <PausaLogo short={false} />
                 <ul id="nav-items" className="nav-items">
                     <NavbarItem path="/" content="Home" />
-                    {/* <NavbarItem path="/menu" content="Cardápio" /> */}
+                    <NavbarItem path="/menu" content="Cardápio" />
                     <NavbarItem path="/contact" content="Contato" />
                     <NavbarItem path="/about" content="Sobre" />
                     <NavbarItem
