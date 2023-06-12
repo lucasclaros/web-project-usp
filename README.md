@@ -48,7 +48,7 @@ Para a navegação do administrador, será a mesma do cliente, com adição dos 
 ## Comentários Sobre o Código
 
 ## Plano de Testes
-
+Para a entrega do Milestone 2, serão executadas algumas simulações sugeridas de funcionalidades que possam garantir uma boa experiência para o usuário.
 ## Resultados dos Testes
 
 ## Procedimento de Execução
