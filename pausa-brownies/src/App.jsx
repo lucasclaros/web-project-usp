@@ -10,6 +10,7 @@ import Register from "./pages/register/Register";
 import ProfileUser from "./pages/profileu/ProfileUser";
 import ProfileAdmin from "./pages/profilea/ProfileAdmin";
 import UserContext from "./context/UserContext";
+import Description from "./pages/description/Description";
 import { useState } from "react";
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
                 <Route path="/register" element={<Register />} exact />
                 <Route path="/profileu" element={<ProfileUser />} exact />
                 <Route path="/profilea" element={<ProfileAdmin />} exact />
+                <Route path="/description" element={<Description />} exact />
+
             </Routes>
             {/* Navbar compensation */}
             <div style={{ height: "80px" }}></div>

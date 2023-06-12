@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+
+.product-description {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Lilita One', cursive;
+    border-radius: 16px 16px 16px 16px;
+    height: 24em;
+    width: 36em;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 16px 16px 0 0;
+    background-color: #fff;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+    height: 12em;
+}
+
+.product-management {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 12em;
+
+}
+
+
+.shaded-text {
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    color: white;
+}
+
+.product-info-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid black;
+    height: 4em;
+}
+
+.product-info p {
+    margin: 0;
+}
+
+.product-title {
+    flex: 1;
+    font-style: normal;
+    font-weight: 400;
+    font-size: clamp(12px, 30vw, 24px);
+    text-align: left;
+    padding-left: 1rem;
+}
+
+.product-text {
+    flex: 3;
+    flex-shrink: 2;
+    font-style: normal;
+    font-weight: 400;
+    font-size: clamp(12px, 30vw, 24px);
+    text-align: center;
+}
+
+.product-info>*:first-child {
+    border-radius: 16px 16px 0 0;
+}
+
+.product-cart {
+    border-radius: 0 0 0 16px;
+    border: 1px solid black;
+    border-top: none;
+    position: relative;
+    background-color: #fff;
+    width: 18em;
+
+}
+
+.product-cart-bar {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+
+}
+
+.product-details {
+    border-radius: 0 0 16px 0;
+    border: 1px solid black;
+    border-top: none;
+    position: relative;
+    background-color: #fff;
+    width: 18em;
+
+}
+
+.product-cart-svg {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.product-cart-svg svg {
+    padding: 0 0.5rem;
+    width: 4em;
+}
+
+.cart-quantity-container {
+    text-align: center;
+    align-items: center;
+}
+
+.cart-quantity-container p {
+    margin: 1.5rem 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 20px;
+    border: 1px solid black;
+    width: 4em;
+
+}
+
+.product-details-svg {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+
+.product-cart-button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.product-cart-button a {
+    width: 8em;
+    margin-top: 0.5em;
+    box-shadow: 0px 0.25em 0.25em rgba(0, 0, 0, 0.25);
+
+}
+
+
+.product-edit-button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.product-edit-button a {
+    margin-top: 0.5em;
+    width: 8em;
+    box-shadow: 0px 0.25em 0.25em rgba(0, 0, 0, 0.25);
+}
