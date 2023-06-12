@@ -1,0 +1,18 @@
+.pausa-button {
+    overflow: hidden;
+    position: relative;
+    background-color: #b86e4c;
+    width: clamp(100px, 30vw, 320px);
+    height: 80px;
+    margin: 0 20px;
+    padding: clamp(0px, 1vw, 40px);
+    font-size: clamp(1.5rem, 1rem + 3vw, 2rem);
+    text-transform: uppercase;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid black;
+    cursor: pointer;
+}

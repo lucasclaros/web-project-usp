@@ -1,0 +1,14 @@
+.presentation-title {
+    min-height: 400px;
+    background-image: url("../assets/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.presentation-title h1 {
+    font-size: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+    text-align: center;
+    width: 600px;
+    margin: 30px;
+}

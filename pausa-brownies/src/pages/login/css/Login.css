@@ -1,0 +1,68 @@
+.login-wrapper .info-section-container {
+    border: none;
+    background-color: transparent;
+}
+
+.login-wrapper .card-header {
+    background-color: #e7d0c5;
+}
+
+.login-wrapper .card-body {
+    background-color: white;
+}
+
+.login-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+    margin: 10px;
+}
+
+.fields-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 50px 40px;
+}
+
+.fields {
+    flex: 4;
+}
+
+.icon {
+    height: 272px;
+    width: 240px;
+    margin: 0 80px;
+}
+@media screen and (max-width: 975px) {
+    .icon {
+        display: none;
+        height: 2720px;
+        width: 240px;
+    }
+}
+
+.login-button {
+    margin: 50px 0;
+}
+
+.forgot-password {
+    text-decoration: none;
+    color: red;
+    font-size: 40px;
+    margin-bottom: 56px;
+    text-align: center;
+}
+
+.register-message {
+    font-size: 40px;
+    margin-bottom: 70px;
+    text-align: center;
+}
+
+.register-message a {
+    text-decoration: none;
+    color: red;
+}

@@ -1,0 +1,19 @@
+.infra-imgs {
+    width: 17vw;
+    height: 26vh;
+    margin: 35px;
+}
+
+.plus,
+.equal {
+    width: min(90px, 10vw);
+    height: min(90px, 25vh);
+    margin: 0 10px;
+}
+
+.step-list {
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}

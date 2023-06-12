@@ -1,0 +1,163 @@
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-content-wrapper {
+    margin: 40px;
+}
+
+.profile-content {
+    flex-direction: column;
+    background-color: white;
+    border-radius: 16px;
+    border: 1px solid black;
+    margin: 2em;
+}
+
+.profile-main {
+    margin: 20px;
+}
+
+.profile-image {
+    margin-right: 1.5em;
+}
+
+.profile-options {
+    margin-bottom: 20px;
+}
+
+.admin-flag {
+    margin: 0 auto;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    color: red;
+}
+
+.options-button .pausa-button {
+    box-shadow: 0px 0.25em 0.25em rgba(0, 0, 0, 0.25);
+}
+
+.first-row,
+.second-row {
+    flex-direction: column;
+    margin: 2em;
+    gap: 2em;
+}
+
+
+.user-management-content {
+    flex-direction: column;
+    background-color: white;
+    border-radius: 16px;
+    border: 1px solid black;
+    margin: 2em;
+}
+
+.user-management-image {
+    margin: 2em;
+}
+
+.user-management-info {
+    margin: 2em;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.user-management-buttons {
+    margin: 2em;
+    flex-direction: column;
+
+}
+
+.user-management-button .pausa-button {
+    box-shadow: 0px 0.25em 0.25em rgba(0, 0, 0, 0.25);
+    margin: 1em;
+
+}
+
+.edit .pausa-button {
+    background-color: green;
+}
+
+.delete .pausa-button {
+    background-color: red;
+}
+
+.product-management-wrapper {
+    margin: 1em;
+}
+
+.product-management-content {
+    gap: 30px;
+}
+
+.product-management-image svg {
+    width: 36em;
+    padding: 0;
+}
+
+.product-info-edit .product-card {
+    box-shadow: 0px 0.25em 0.25em rgba(0, 0, 0, 0.25);
+}
+
+.report-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0px;
+    margin: 2rem auto;
+    border-radius: 16px;
+    width: 72rem;
+    padding: 0;
+}
+
+.users-count,
+.products-count,
+.sales-count {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    background-color: white;
+    width: 72rem;
+    height: 3rem;
+
+}
+
+.users-count {
+    border-radius: 16px 16px 0 0;
+    border: 1px solid black;
+}
+
+.products-count {
+    border: 1px solid black;
+    border-top: none;
+
+}
+
+.sales-count {
+    border-radius: 0 0 16px 16px;
+    border: 1px solid black;
+    border-top: none;
+}
+
+.report-content .text-title {
+    flex: 1;
+    font-size: 24px;
+    margin-left: 2rem;
+    display: block;
+}
+
+.report-content .text-content {
+    flex: 2;
+    font-size: 24px;
+    text-align: center;
+    display: block;
+}

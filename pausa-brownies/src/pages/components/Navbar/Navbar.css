@@ -1,0 +1,77 @@
+header {
+    position: relative;
+}
+
+.nav-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    height: 100px;
+    background-color: white;
+    border: 1px solid #000000;
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
+    padding: 0 100px;
+    text-decoration: none;
+}
+
+.nav-items {
+    list-style-type: none;
+    padding-left: 0;
+    display: flex;
+}
+
+.aside-wrapeper {
+    display: flex;
+    margin-right: -200px;
+}
+
+.hamburger-icon {
+    display: none;
+    color: #b86e4c;
+}
+
+.test-aside {
+    display: none;
+    position: absolute;
+    right: -200px;
+    width: 100%;
+    background-color: white;
+    height: 100vh;
+}
+
+.test-aside-active {
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.test-aside-active .navbar-item {
+    width: 60%;
+    margin-bottom: 20px;
+}
+
+@media screen and (width <= 960px) {
+    .hamburger-icon {
+        display: block;
+        cursor: pointer;
+    }
+
+    .nav-items {
+        display: none;
+    }
+
+    .nav-bar {
+        justify-content: space-between;
+        padding: 0 50px;
+    }
+}
+
+@media screen and (width > 960px) {
+    .test-aside-active {
+        display: none;
+    }
+}

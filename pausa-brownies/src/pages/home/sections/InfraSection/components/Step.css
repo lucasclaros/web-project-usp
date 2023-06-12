@@ -1,0 +1,19 @@
+.step {
+    display: flex;
+    align-items: center;
+    font-size: clamp(1rem, 1rem + 1vw, 1.5rem);
+    width: 15vw;
+}
+
+.rounded-div {
+    border: 3px solid black;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.step-desc {
+    flex: 5;
+    text-align: center;
+    margin: 0 10px;
+}

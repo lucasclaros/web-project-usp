@@ -1,0 +1,12 @@
+.about-desc {
+    font-size: clamp(1.5rem, 1rem + 2vw, 3rem);
+    padding: 40px;
+    margin: 40px;
+    text-align: center;
+}
+
+@media screen and (max-width: 960px) {
+    .about-desc {
+        margin: 20px;
+    }
+}

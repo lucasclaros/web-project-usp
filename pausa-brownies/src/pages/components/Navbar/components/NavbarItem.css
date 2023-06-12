@@ -1,0 +1,21 @@
+.navbar-item {
+    text-decoration: none;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    width: clamp(20px, 10vw, 80px);
+    height: 56px;
+    border-radius: 16px;
+    border: 1px solid black;
+    margin-left: 22px;
+    overflow: hidden;
+}
+
+.navbar-item-normal {
+    background-color: #b86e4c;
+    color: white;
+}
+
+.navbar-item-login {
+    background-color: white;
+}

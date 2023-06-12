@@ -1,0 +1,51 @@
+.michael-img {
+    width: 368px;
+    height: 474px;
+}
+
+.feedbacks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.feedback-imgs {
+    display: flex;
+    margin: 0 40px;
+}
+
+.customers-prints {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 50px;
+}
+
+@media screen and (max-width: 960px) {
+    .feedback-imgs {
+        align-items: center;
+    }
+    .customers-prints {
+        margin-left: 0;
+    }
+}
+
+.customers-prints img {
+    width: 100%;
+    height: 100%;
+}
+
+/* 
+Width calc explanation: 
+    368px  from michael-img
+    50px   from margin-left
+    min(*) from customers-prints img above
+*/
+.customers-message {
+    max-width: calc(368px + 50px + min(610px, 66vw));
+    height: 130px;
+    margin: 0 30px;
+    background-color: #dda6a6;
+    margin-top: 54px;
+}
