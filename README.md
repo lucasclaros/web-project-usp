@@ -54,7 +54,7 @@ Para a entrega do Milestone 2, serão executadas algumas simulações sugeridas 
 - Login
 - Logout
 - Navegação pela página
-- Operações no carrinho
+- Operações de compra
 ## Resultados dos Testes
 Os testes do Milestone 2 indicaram um bom funcionamento para os casos propostos, demonstrando correta integração entre as páginas, concluindo que a aplicação está bem direcionada para futura implementação de um servidor back-end.
 ## Procedimento de Execução
