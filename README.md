@@ -48,16 +48,22 @@ Para a navegação do administrador, será a mesma do cliente, com adição dos 
 ## Comentários Sobre o Código
 
 ## Plano de Testes
-Para a entrega do Milestone 2, serão executadas algumas simulações sugeridas de funcionalidades que possam garantir uma boa experiência para o usuário.
+Para a entrega do Milestone 2, serão executadas algumas simulações sugeridas de funcionalidades que possam garantir uma boa experiência para o usuário, como responsividade do sistema em diversos dispositivos e navegadores, além de alguns cenários de sequência de acesso do sistema:
+- Cadastro de Usuário
+- Gerenciamento de Perfil
+- Login
+- Logout
+- Navegação pela página
+- Operações no carrinho
 ## Resultados dos Testes
-
+Os testes do Milestone 2 indicaram um bom funcionamento para os casos propostos, demonstrando correta integração entre as páginas, concluindo que a aplicação está bem direcionada para futura implementação de um servidor back-end.
 ## Procedimento de Execução
 
 ### Milestone 1:
 
 Para acessar os mockups do projeto, acesse o [link](https://www.figma.com/file/XGRnGMWEZVCLh8bxgKizsG/Pausa-Brownies?type=design&node-id=0-1&t=H95jZJzXORe0ZTdF-0) do Figma contendo as telas prototipadas do sistema.
 
-
+### Milestone 2:
 Para acessar as telas funcionais siga os passos abaixo:
 
 
@@ -67,9 +73,14 @@ Para acessar as telas funcionais siga os passos abaixo:
 git clone https://github.com/lucasclaros/web-project-usp
 ```
 
-2. Na pasta do projeto execute no navegador o arquivo:
+2. Execute o comando para instalar as dependências:
 
 ```
-./web-project-usp/pages/index.html
+npm install
+```
+3. Na pasta do projeto execute o seguinte comando para rodar a aplicação numa instância local:
+
+```
+npm start
 ```
 ## Comentários
