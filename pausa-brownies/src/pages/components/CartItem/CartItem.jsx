@@ -3,11 +3,11 @@ import { ReactComponent as RealBrownie } from "../../profilea/assets/RealBrownie
 import "./CartItem.css";
 
 
-const CartItem = ({value = 0 }) => {
-    const formattedValue = value.toLocaleString('en-US', {
+const CartItem = ({ price = 0, name = "Brownie", quantity = 0 }) => {
+    const formattedPrice = price.toLocaleString('pt-BR', {
         style: 'currency',
         currency: 'BRL'
-      });
+    });
     return (
 
         <div className="cart-item-wrapper centered-content">
@@ -17,18 +17,18 @@ const CartItem = ({value = 0 }) => {
                 </div>
                 <div className="cart-item-info centered-content">
                     <div className="cart-item-name">
-                        <h3>Nome do Produto</h3>
+                        {name}
                     </div>
                     <div className="cart-item-price">
-                        <h3>{formattedValue}</h3>
+                        {formattedPrice}
                     </div>
                     <div className="cart-item-quantity">
-                        <h3>Total: <span>20</span> </h3>
+                        Total: {quantity}
                     </div>
                 </div>
-   
+
             </div>
-           
+
 
 
 

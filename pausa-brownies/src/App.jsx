@@ -12,6 +12,8 @@ import ProfileAdmin from "./pages/profilea/ProfileAdmin";
 import UserContext from "./context/UserContext";
 import Description from "./pages/description/Description";
 import Management from "./pages/management/Management";
+import CartItem from "./pages/components/CartItem/CartItem";
+import Cart from "./pages/cart/Cart";
 import { useState } from "react";
 
 function App() {
@@ -31,6 +33,8 @@ function App() {
                 <Route path="/profilea" element={<ProfileAdmin />} exact />
                 <Route path="/description" element={<Description />} exact />
                 <Route path="/management" element={<Management />} exact />
+                <Route path="/cartitem" element={<CartItem />} exact />
+                <Route path="/cart" element={<Cart />} exact />
 
             </Routes>
             {/* Navbar compensation */}
