@@ -1,0 +1,111 @@
+.product-edit-info-wrapper .info-section-container {
+    padding: 40px 0;
+    border: 0 solid black;
+    background-color: transparent;
+    width: 72rem;
+
+}
+
+.product-edit-image {
+    margin: 2rem auto;
+}
+
+.product-edit-content {
+    flex-direction: column;
+}
+
+.product-edit-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0px;
+    margin: 1rem auto;
+    border-radius: 16px;
+    width: 52rem;
+    padding: 0;
+}
+
+
+.product-edit-info .text-title {
+    flex: 1;
+    font-size: 24px;
+    margin-left: 2rem;
+}
+
+.product-edit-info .text-content {
+    flex: 2;
+    font-size: 24px;
+    text-align: center;
+}
+
+.product-comments {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0px;
+    margin-top: 1rem;
+    border-radius: 16px;
+    width: 52rem;
+    padding: 0;
+
+}
+
+.comment-text {
+    margin: 0;
+    background-color: white;
+    width: 48rem;
+    height: 3rem;
+    text-align: center;
+    border: 1px solid black;
+    padding: 0.5rem 0;
+    font-size: 24px;
+}
+
+.comment-text:first-of-type {
+    border-radius: 16px 16px 0 0;
+    border: 1px solid black;
+    border-bottom: none;
+}
+
+.comment-text:last-of-type {
+    border-radius: 0 0 16px 16px;
+    border: 1px solid black;
+    border-top: none;
+}
+
+
+.edit-buttons {
+    margin-bottom: 1rem;
+}
+
+.edit-buttons .pausa-button {
+    box-shadow: 0px 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+    margin: 1rem;
+}
+
+.edit-buttons {
+    margin: 2em;
+    flex-direction: column;
+
+}
+
+.edit-button .pausa-button {
+    box-shadow: 0px 0.25em 0.25em rgba(0, 0, 0, 0.25);
+    margin: 1em;
+
+}
+
+.edit-button .pausa-button {
+    background-color: green;
+}
+
+.delete-button .pausa-button {
+    background-color: red;
+
+}
+
+.product-edit-info .input-wrapper {
+    width: 50rem;
+}
