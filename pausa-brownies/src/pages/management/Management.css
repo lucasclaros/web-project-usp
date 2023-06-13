@@ -1,0 +1,119 @@
+.product-description-info-wrapper .info-section-container {
+    padding: 40px 0;
+    border: 0 solid black;
+    background-color: transparent;
+    width: 72rem;
+
+}
+
+.product-description-image {
+    margin: 2rem auto;
+}
+
+.product-description-content {
+    flex-direction: column;
+}
+
+.product-description-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0px;
+    margin: 1rem auto;
+    border-radius: 16px;
+    width: 52rem;
+    padding: 0;
+}
+
+.product-name,
+.product-price,
+.product-ingredients,
+.product-stock,
+.product-friends {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: white;
+    width: 48rem;
+    height: 3rem;
+}
+
+.product-name {
+    border-radius: 16px 16px 0 0;
+    border: 1px solid black;
+}
+
+.product-price,
+.product-ingredients,
+.product-stock {
+    border: 1px solid black;
+    border-top: none;
+
+}
+
+.product-friends {
+    border-radius: 0 0 16px 16px;
+    border: 1px solid black;
+    border-top: none;
+}
+
+.product-description-info .text-title {
+    flex: 1;
+    font-size: 24px;
+    margin-left: 2rem;
+}
+
+.product-description-info .text-content {
+    flex: 2;
+    font-size: 24px;
+    text-align: center;
+}
+
+.product-comments {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0px;
+    margin-top: 1rem;
+    border-radius: 16px;
+    width: 52rem;
+    padding: 0;
+
+}
+
+.comment-text {
+    margin: 0;
+    background-color: white;
+    width: 48rem;
+    height: 3rem;
+    text-align: center;
+    border: 1px solid black;
+    padding: 0.5rem 0;
+    font-size: 24px;
+}
+
+.comment-text:first-of-type {
+    border-radius: 16px 16px 0 0;
+    border: 1px solid black;
+    border-bottom: none;
+}
+
+.comment-text:last-of-type {
+    border-radius: 0 0 16px 16px;
+    border: 1px solid black;
+    border-top: none;
+}
+
+
+.description-buttons {
+    margin-bottom: 1rem;
+}
+
+.description-buttons .pausa-button {
+    box-shadow: 0px 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+    margin: 1rem;
+}
