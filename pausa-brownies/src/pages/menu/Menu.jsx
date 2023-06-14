@@ -27,7 +27,7 @@ const Menu = () => {
 
             <div className="menu-wrapper">
 
-                <div className="meu-search-bar">
+                <div className="menu-search-bar">
                     <SearchBar
                         searchQuery={searchQuery}
                         handleSearch={handleSearch}

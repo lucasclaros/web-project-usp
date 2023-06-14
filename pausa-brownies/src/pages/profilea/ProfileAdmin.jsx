@@ -8,7 +8,7 @@ import brownieData from "../../mock/brownieData.json"
 import usersData from "../../mock/usersData.json"
 import SearchBar from "../components/SearchBar/SearchBar";
 import { ReactComponent as ProfileIcon } from "./assets/profilea.svg";
-import { ReactComponent as EditIcon } from "./assets/pencil.svg";
+
 
 
 
@@ -54,6 +54,18 @@ const ProfileAdmin = () => {
 
     const handleClick = (user) => {
         setSelectedUser(user);
+    };
+
+    // button handler
+    const [disabled, setDisabled] = useState(false);
+    const [value, setValue] = useState("");
+  
+    const handleChange = (e) => {
+      setValue(e.target.value);
+    };
+
+    const handleEditClick = () => {
+      setDisabled(!disabled);
     };
 
     const totalStock = brownieData.reduce((total, item) => total + item.stock, 0);
@@ -136,31 +148,36 @@ const ProfileAdmin = () => {
                                                 <PausaTextField
                                                     value={selectedUser.name}
                                                     label={"Nome"}
+                                                    disabled={"true"}
+                                                    handleChange={handleChange}
                                                 />
                                             </div>
                                             <div className="user-info-edit centered-content">
                                                 <PausaTextField
                                                     value={selectedUser.email}
                                                     label={"E-mail"}
+                                                    disabled={"true"}
+                                                    handleChange={handleChange}
                                                 />
                                             </div>
                                             <div className="user-info-edit centered-content">
                                                 <PausaTextField
                                                     value={selectedUser.telefone}
                                                     label={"Telefone"}
+                                                    disabled={"true"}
+                                                    handleChange={handleChange}
                                                 />
                                             </div>
                                             <div className="user-management-buttons centered-content">
                                                 <div className="user-management-button edit">
                                                     <PausaButton
                                                         buttonText={"Editar"}
-                                                        icon={<EditIcon />}
+                                                        onclick={handleEditClick}
                                                     />
                                                 </div>
                                                 <div className="user-management-button delete">
                                                     <PausaButton
                                                         buttonText={"Excluir"}
-                                                        icon={<EditIcon />}
                                                     />
                                                 </div>
 

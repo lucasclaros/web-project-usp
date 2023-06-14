@@ -9,6 +9,7 @@ const PausaTextField = ({
     inputType,
     handleChange,
     disabled,
+  
 }) => {
     return (
         <>
@@ -21,7 +22,7 @@ const PausaTextField = ({
                     type={inputType}
                     placeholder={placeholder}
                     onChange={handleChange}
-                    disabled={disabled}
+                    disabled={disabled ? "true" : "false"}
                     autoComplete="nope"
                     required
                 />
