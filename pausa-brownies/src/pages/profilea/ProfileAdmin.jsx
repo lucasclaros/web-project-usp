@@ -5,6 +5,7 @@ import PausaTextField from "../components/TextField/PausaTextField";
 import PausaButton from "../components/Buttons/PausaButton/PausaButton";
 import ProductMainCard from "../components/ProductMainCard/ProductMainCard";
 import brownieData from "../../mock/brownieData.json"
+import usersData from "../../mock/usersData.json"
 import SearchBar from "../components/SearchBar/SearchBar";
 import { ReactComponent as ProfileIcon } from "./assets/profilea.svg";
 import { ReactComponent as EditIcon } from "./assets/pencil.svg";
@@ -15,7 +16,10 @@ import { ReactComponent as EditIcon } from "./assets/pencil.svg";
 const ProfileAdmin = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [searchResults, setSearchResults] = useState([]);
+    const [query, setQuery] = useState('');
+    const [filteredUsers, setFilteredUsers] = useState([]);
     const [selectedBrownie, setSelectedBrownie] = useState(null);
+    const [selectedUser, setSelectedUser] = useState(null);
     
 
     const handleSearch = (e) => {
@@ -23,17 +27,37 @@ const ProfileAdmin = () => {
         setSearchQuery(query);
     
         const results = brownieData.filter(
-        (item) => item.name.toLowerCase().includes(query) && query.length >= 3
+        (item) => item.name.toLowerCase().includes(query) && query.length >= 2
         );
         setSearchResults(results);
         setSelectedBrownie(null);
     };
 
-    const totalStock = brownieData.reduce((total, item) => total + item.stock, 0);
     
+  
+    const handleInputChange = (e) => {
+        const inputValue = e.target.value;
+        setQuery(inputValue);
+  
+
+        const filtered = usersData.filter((user) =>
+            user.name.toLowerCase().includes(inputValue.toLowerCase()) && inputValue.length >= 2
+        );
+        setFilteredUsers(filtered);
+        setSelectedUser(null);
+
+    };
+
     const handleBrownieClick = (brownie) => {
         setSelectedBrownie(brownie);
     };
+
+    const handleClick = (user) => {
+        setSelectedUser(user);
+    };
+
+    const totalStock = brownieData.reduce((total, item) => total + item.stock, 0);
+
     return (
         <div className="profile-admin-wrapper">
             <div className="profile-wrapper">
@@ -71,95 +95,88 @@ const ProfileAdmin = () => {
                     }
                 />
             </div>
-            <div className="profile-options-wrapper">
-                <InfoCard
-                    header={"Opções"}
-                    body={
-                        <div className="admin-options centered-content">
-                            <div className="first-row centered-content">
-                                <div className="options-button">
-                                    <PausaButton
-                                        buttonText={"Gerenciar Usuários"}
-                                    />
-                                </div>
-                                <div className="options-button">
-                                    <PausaButton
-                                        buttonText={"Gerenciar Produtos"}
-                                    />
-                                </div>
-
-                            </div>
-                            <div className="second-row centered-content">
-                                <div className="options-button">
-                                    <PausaButton
-                                        buttonText={"Relatório"}
-                                    />
-                                </div>
-                                <div className="options-button">
-                                    <PausaButton
-                                        buttonText={"Log Out"}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    }
+            <div className="profile-search-wrapper">
+                <SearchBar
+                    searchQuery={query}
+                    handleSearch={handleInputChange}
+                    placeholder={"Buscar Usuários para Gerenciar"}
                 />
             </div>
-            <div className="profile-search-wrapper">
-                <p>Aqui fica a barra</p>
-            </div>
-            <div className="user-show-wrapper">
-                <div className="user-management-wrapper">
-                    <InfoCard
-                        header={"Usuário"}
-                        body={
-                            <div className="user-management-wrapper">
-                                <div className="user-management-content">
-                                    <div className="user-management-image centered-content">
-                                        <ProfileIcon />
-                                    </div>
-                                    <div className="user-management-info centered-content">
-                                        <div className="user-info-edit centered-content">
-                                            <PausaTextField
-                                                value={"Pausa Brownies"}
-                                                label={"Nome"}
-                                            />
+            <div className="profile-list-show-wrapper centered-content">
+                {filteredUsers.length > 0 && !selectedUser && (
+                    <div className="profile-results-wrapper centered-content">
+                        <div className="search-title shaded-text">
+                            Resultados da busca (clique no usuário para gerenciar):
+                        </div>
+                        <ul>
+                            {filteredUsers.map((item) => (
+                                <li className="search-result" key={item.id} onClick={() => handleClick(item)}>
+                                    {item.name}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>    
+              
+                )} 
+            </div>         
+            
+            {selectedUser && (
+                <div className="user-show-wrapper">
+                    <div className="user-management-wrapper">
+                        <InfoCard
+                            header={selectedUser.name}
+                            body={
+                                <div className="user-management-wrapper">
+                                    <div className="user-management-content">
+                                        <div className="user-management-image centered-content">
+                                            <ProfileIcon />
                                         </div>
-                                        <div className="user-info-edit centered-content">
-                                            <PausaTextField
-                                                value={"pausa@brownies.com"}
-                                                label={"E-mail"}
-                                            />
-                                        </div>
-                                        <div className="user-info-edit centered-content">
-                                            <PausaTextField
-                                                value={"(99) 99999-9999"}
-                                                label={"Telefone"}
-                                            />
-                                        </div>
-                                        <div className="user-management-buttons centered-content">
-                                            <div className="user-management-button edit">
-                                                <PausaButton
-                                                    buttonText={"Editar"}
-                                                    icon={<EditIcon />}
+                                        <div className="user-management-info centered-content">
+                                            <div className="user-info-edit centered-content">
+                                                <PausaTextField
+                                                    value={selectedUser.name}
+                                                    label={"Nome"}
                                                 />
                                             </div>
-                                            <div className="user-management-button delete">
-                                                <PausaButton
-                                                    buttonText={"Excluir"}
-                                                    icon={<EditIcon />}
+                                            <div className="user-info-edit centered-content">
+                                                <PausaTextField
+                                                    value={selectedUser.email}
+                                                    label={"E-mail"}
                                                 />
                                             </div>
+                                            <div className="user-info-edit centered-content">
+                                                <PausaTextField
+                                                    value={selectedUser.telefone}
+                                                    label={"Telefone"}
+                                                />
+                                            </div>
+                                            <div className="user-management-buttons centered-content">
+                                                <div className="user-management-button edit">
+                                                    <PausaButton
+                                                        buttonText={"Editar"}
+                                                        icon={<EditIcon />}
+                                                    />
+                                                </div>
+                                                <div className="user-management-button delete">
+                                                    <PausaButton
+                                                        buttonText={"Excluir"}
+                                                        icon={<EditIcon />}
+                                                    />
+                                                </div>
 
+                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
-
-                            </div>
-                        }
-                    />
+                            }
+                        />
+                    </div>
                 </div>
-            </div>
+            )}
+            {filteredUsers.length === 0 && !selectedUser && (
+                <p></p>
+            )}  
             <div className="search-bar-products centered-content">
                 <SearchBar
                         searchQuery={searchQuery}
@@ -195,9 +212,9 @@ const ProfileAdmin = () => {
                     </div>
                 )}
 
-                {searchResults.length === 0 && !selectedBrownie && (
-                    <p></p>
-                )}
+            {searchResults.length === 0 && !selectedBrownie && (
+                <p></p>
+            )}
             </div>
 
             <div className="report-wrapper">
