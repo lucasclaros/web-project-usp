@@ -6,7 +6,7 @@ import { ReactComponent as AddProduct } from './assets/plus-sign.svg';
 import { ReactComponent as RemoveProduct } from './assets/minus-sign.svg';
 import { ReactComponent as BrownieStack } from './assets/brownie.svg';
 
-const ProductCard = ({ button1, button2, name, price, keywords}) => {
+const ProductCard = ({ button1, button2, name, price, keywords, to}) => {
     const formattedPrice = price.toLocaleString('pt-BR', {
         style: 'currency',
         currency: 'BRL'
@@ -46,7 +46,7 @@ const ProductCard = ({ button1, button2, name, price, keywords}) => {
                 <div className="product-cart">
                     <div className="product-cart-button-wrapper">
                         <div className="product-cart-button">
-                            <PausaButton buttonText={button1} />
+                            <PausaButton buttonText={button1} to={to} />
                         </div>
                     </div>
 
@@ -64,7 +64,7 @@ const ProductCard = ({ button1, button2, name, price, keywords}) => {
                 <div className="product-details">
                     <div className="product-edit-button-wrapper">
                         <div className="product-edit-button">
-                            <PausaButton buttonText={button2} />
+                            <PausaButton buttonText={button2} to={to} />
                         </div>
                     </div>
                     <div className="product-details-svg">

@@ -6,7 +6,7 @@ import { ReactComponent as RealBrownie } from "../../profilea/assets/RealBrownie
 import { useMediaQuery } from "@uidotdev/usehooks";
 
 
-const ProductMainCard = ({ button1, button2, name, price, keywords}) => {
+const ProductMainCard = ({ button1, button2, name, price, keywords, to}) => {
     const isMobile = useMediaQuery("(max-width: 960px)");
     return (
         <InfoCard
@@ -29,6 +29,7 @@ const ProductMainCard = ({ button1, button2, name, price, keywords}) => {
                                     name={name}
                                     price ={price}
                                     keywords ={keywords}
+                                    to={to}
                                 />
                             </div>
                         </div>

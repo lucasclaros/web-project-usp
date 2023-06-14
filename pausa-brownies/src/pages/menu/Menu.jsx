@@ -44,6 +44,7 @@ const Menu = () => {
                             keywords={item.keywords.join(", ")}
                             button1={"Adicionar ao carrinho"}
                             button2={"Ver Detalhes"}
+                            to={`/description/${item.id}`}
                         />
                     </div>
                     ))}
