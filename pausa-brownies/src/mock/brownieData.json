@@ -4,63 +4,72 @@
       "price": 8.5,
       "keywords": ["Chocolate", "Tradicional", "Sem Recheio"],
       "ingredients": ["Ovos", "Leite", "Farinha"],
-      "vaiBemCom": ["Café", "Refrigerante"]
+      "vaiBemCom": ["Café", "Refrigerante"],
+      "stock": 10
     },
     {
       "name": "Brownie de Brigadeiro",
       "price": 9.75,
       "keywords": ["Chocolate", "Brigadeiro", "Tradicional"],
       "ingredients": ["Ovos", "Leite Condensado", "Farinha"],
-      "vaiBemCom": ["Sorvete", "Chá"]
+      "vaiBemCom": ["Sorvete", "Chá"],
+      "stock": 10
     },
     {
       "name": "Brownie de Morango",
       "price": 7.25,
       "keywords": ["Morango", "Recheado", "Baunilha"],
       "ingredients": ["Ovos", "Leite", "Farinha", "Morangos"],
-      "vaiBemCom": ["Creme de Leite", "Vinho"]
+      "vaiBemCom": ["Creme de Leite", "Vinho"],
+      "stock": 10
     },
     {
       "name": "Brownie de Nozes",
       "price": 10.0,
       "keywords": ["Nozes", "Tradicional", "Sem Recheio"],
       "ingredients": ["Ovos", "Leite", "Farinha", "Nozes"],
-      "vaiBemCom": ["Sorvete de Creme", "Café"]
+      "vaiBemCom": ["Sorvete de Creme", "Café"],
+      "stock": 10
     },
     {
       "name": "Brownie de Nutella",
       "price": 11.5,
       "keywords": ["Nutella", "Recheado", "Chocolate"],
       "ingredients": ["Ovos", "Leite", "Farinha", "Nutella"],
-      "vaiBemCom": ["Leite Gelado", "Smoothie"]
+      "vaiBemCom": ["Leite Gelado", "Smoothie"],
+      "stock": 10
     },
     {
       "name": "Brownie de Caramelo",
       "price": 8.0,
       "keywords": ["Caramelo", "Tradicional", "Sem Recheio"],
       "ingredients": ["Ovos", "Leite", "Farinha", "Caramelo"],
-      "vaiBemCom": ["Chantilly", "Café Gelado"]
+      "vaiBemCom": ["Chantilly", "Café Gelado"],
+      "stock": 10
     },
     {
       "name": "Brownie de Amêndoas",
       "price": 9.25,
       "keywords": ["Amêndoas", "Recheado", "Chocolate"],
       "ingredients": ["Ovos", "Leite", "Farinha", "Amêndoas"],
-      "vaiBemCom": ["Sorvete de Chocolate", "Chá Gelado"]
+      "vaiBemCom": ["Sorvete de Chocolate", "Chá Gelado"],
+      "stock": 10
     },
     {
       "name": "Brownie de Laranja",
       "price": 7.75,
       "keywords": ["Laranja", "Tradicional", "Sem Recheio"],
       "ingredients": ["Ovos", "Leite", "Farinha", "Laranja"],
-      "vaiBemCom": ["Chá de Ervas", "Suco Natural"]
+      "vaiBemCom": ["Chá de Ervas", "Suco Natural"],
+      "stock": 10
     },
     {
       "name": "Brownie de Café",
       "price": 8.75,
       "keywords": ["Café", "Recheado", "Baunilha"],
       "ingredients": ["Ovos", "Leite", "Farinha", "Café"],
-      "vaiBemCom": ["Cappuccino", "Milkshake"]
+      "vaiBemCom": ["Cappuccino", "Milkshake"],
+      "stock": 10
     },
     {
       "name": "Brownie de Avelã",

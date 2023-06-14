@@ -161,3 +161,8 @@
     text-align: center;
     display: block;
 }
+
+.product-show-wrapper {
+    flex-direction: column;
+    width: 100%
+}

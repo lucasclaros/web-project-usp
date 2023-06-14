@@ -1,9 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import "./css/ProfileAdmin.css";
 import InfoCard from "../components/InfoCards/InfoCard";
 import PausaTextField from "../components/TextField/PausaTextField";
 import PausaButton from "../components/Buttons/PausaButton/PausaButton";
-import ProductCard from "../components/ProductCards/ProductCard";
+import ProductMainCard from "../components/ProductMainCard/ProductMainCard";
+import brownieData from "../../mock/brownieData.json"
+import SearchBar from "../components/SearchBar/SearchBar";
+
+
 import { ReactComponent as ProfileIcon } from "./assets/profilea.svg";
 import { ReactComponent as EditIcon } from "./assets/pencil.svg";
 import { ReactComponent as RealBrownie } from "./assets/RealBrownie.svg";
@@ -11,6 +15,24 @@ import { ReactComponent as RealBrownie } from "./assets/RealBrownie.svg";
 
 
 const ProfileAdmin = () => {
+    const [searchQuery, setSearchQuery] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
+    const [selectedBrownie, setSelectedBrownie] = useState(null);
+    
+    const handleSearch = (e) => {
+        const query = e.target.value.toLowerCase();
+        setSearchQuery(query);
+    
+        const results = brownieData.filter(
+        (item) => item.name.toLowerCase().includes(query) && query.length >= 3
+        );
+        setSearchResults(results);
+        setSelectedBrownie(null);
+    };
+    
+    const handleBrownieClick = (brownie) => {
+        setSelectedBrownie(brownie);
+    };
     return (
         <div className="profile-admin-wrapper">
             <div className="profile-wrapper">
@@ -137,32 +159,43 @@ const ProfileAdmin = () => {
                     />
                 </div>
             </div>
-            <div className="product-search-wrapper">
-                <p>Aqui fica a barra</p>
+            <div className="search-bar-products centered-content">
+            <SearchBar
+                        searchQuery={searchQuery}
+                        handleSearch={handleSearch}
+                    />
             </div>
             <div className="product-show-wrapper">
-                <InfoCard
-                    header={"Produto"}
-                    body={
-                        <div className="product-management-wrapper">
-                            <div className="product-management-content centered-content">
-                                <div className="product-management-image centered-content">
-                                    <RealBrownie />
-                                </div>
-                                <div className="product-management-info centered-content">
-                                    <div className="product-info-edit centered-content">
-                                        <ProductCard
-                                            button1={"Adicionar"}
-                                            button2={"Editar"}
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                />
+                {searchResults.length > 0 && !selectedBrownie && (
+                <div className="products-results-wrapper">
+                    <h3>Resultados da busca:</h3>
+                     <ul>
+                        {searchResults.map((item) => (
+                            <li key={item.id} onClick={() => handleBrownieClick(item)}>
+                                {item.name}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
 
+            {selectedBrownie && (
+                    <div className="selected-produt-wrapper">
+                        <ProductMainCard
+                            name={selectedBrownie.name}
+                            price={selectedBrownie.price}
+                            keywords={selectedBrownie.keywords.join(", ")}
+                            button1={"Adicionar ao carrinho"}
+                            button2={"Ver Detalhes"}
+                        />
+                    </div>
+                )}
+
+                {searchResults.length === 0 && !selectedBrownie && (
+                    <p></p>
+                )}
             </div>
+
             <div className="report-wrapper">
                 <InfoCard
                     header={"Relatório"}

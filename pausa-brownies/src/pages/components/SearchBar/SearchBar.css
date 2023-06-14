@@ -1,0 +1,19 @@
+.search-bar-wrapper {
+    width: 85vw;
+
+}
+
+.search-bar-input {
+    width: 60vw;
+    height: 5vw;
+    border-radius: 0 16px 16px 0;
+    font-size: clamp(8px, 1rem + 2vw, 24px);
+    font-family: "Lilita One", cursive;
+    padding: 1vw;
+}
+
+.search-bar-icon {
+    width: 5vw;
+    border-radius: 16px 0 0 16px;
+    border: 1px solid black;
+}
