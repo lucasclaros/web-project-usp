@@ -6,7 +6,11 @@ import { ReactComponent as AddProduct } from './assets/plus-sign.svg';
 import { ReactComponent as RemoveProduct } from './assets/minus-sign.svg';
 import { ReactComponent as BrownieStack } from './assets/brownie.svg';
 
-const ProductCard = ({ button1, button2 }) => {
+const ProductCard = ({ button1, button2, name, price, keywords}) => {
+    const formattedPrice = value.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+      });
     return (
 
         <div className="product-description product-card">
@@ -16,7 +20,7 @@ const ProductCard = ({ button1, button2 }) => {
                         Produto:
                     </div>
                     <div className="product-text">
-                        Brownie Tradicional
+                        {name}
                     </div>
                 </div>
 
@@ -25,7 +29,7 @@ const ProductCard = ({ button1, button2 }) => {
                         Valor:
                     </div>
                     <div className="product-text">
-                        6 reais no PIX
+                        {formattedPrice}
                     </div>
                 </div>
 
@@ -34,7 +38,7 @@ const ProductCard = ({ button1, button2 }) => {
                         Keywords:
                     </div>
                     <div className="product-text">
-                        Chocolate, Tradicional, Sem Recheio
+                        {keywords}
                     </div>
                 </div>
             </div>
