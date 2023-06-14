@@ -4,13 +4,13 @@ import "./SearchBar.css";
 
 
 
-const SearchBar = ({searchQuery, handleSearch}) => {
+const SearchBar = ({searchQuery, handleSearch, placeholder}) => {
     return (
         <div className="search-bar-wrapper centered-content">
             <img className="search-bar-icon" src={lupa} alt="search-icon" />
             <input className="search-bar-input"
                 type="text"
-                placeholder="Digite sua busca..."
+                placeholder={placeholder}
                 value={searchQuery}
                 onChange={handleSearch}
                 enabled

@@ -76,6 +76,7 @@
       "price": 9.5,
       "keywords": ["Avelã", "Recheado", "Chocolate"],
       "ingredients": ["Ovos", "Leite", "Farinha", "Avelã"],
-      "vaiBemCom": ["Sorvete de Baunilha", "Café com Leite"]
+      "vaiBemCom": ["Sorvete de Baunilha", "Café com Leite"],
+      "stock": 10
     }
   ]

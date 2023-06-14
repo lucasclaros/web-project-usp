@@ -1,9 +1,19 @@
 .menu-wrapper {
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
 .menu-total-card-wrapper {
     font-size: clamp(12px, 1rem + 2vw, 24px);
     margin-top: 1vw;
+}
+
+.menu-search-bar {
+
+    margin: 1vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }

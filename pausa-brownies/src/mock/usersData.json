@@ -1,0 +1,72 @@
+[
+      {
+        "name": "João dos Santos Filho",
+        "email": "pausa@brownies.com",
+        "telefone": "(11) 91234-5678",
+        "address": "Rua das Flores, 123, São Paulo - SP",
+        "password": "RandomPassword123"
+      },
+      {
+        "name": "Maria da Silva",
+        "email": "maria.silva@example.com",
+        "telefone": "(21) 98765-4321",
+        "address": "Avenida das Palmeiras, 456, Rio de Janeiro - RJ",
+        "password": "RandomPassword456"
+      },
+      {
+        "name": "Pedro Oliveira",
+        "email": "pedro.oliveira@example.com",
+        "telefone": "(31) 99876-5432",
+        "address": "Rua dos Ipês, 789, Belo Horizonte - MG",
+        "password": "RandomPassword789"
+      },
+      {
+        "name": "Ana Pereira",
+        "email": "ana.pereira@example.com",
+        "telefone": "(41) 92345-6789",
+        "address": "Avenida das Flores, 987, Curitiba - PR",
+        "password": "RandomPassword987"
+      },
+      {
+        "name": "Lucas Fernandes",
+        "email": "lucas.fernandes@example.com",
+        "telefone": "(51) 91234-5678",
+        "address": "Rua das Palmas, 654, Porto Alegre - RS",
+        "password": "RandomPassword654"
+      },
+      {
+        "name": "Mariana Costa",
+        "email": "mariana.costa@example.com",
+        "telefone": "(61) 98765-4321",
+        "address": "Avenida dos Girassóis, 321, Brasília - DF",
+        "password": "RandomPassword321"
+      },
+      {
+        "name": "Rafaela Santos",
+        "email": "rafaela.santos@example.com",
+        "telefone": "(71) 99876-5432",
+        "address": "Rua dos Lírios, 678, Salvador - BA",
+        "password": "RandomPassword678"
+      },
+      {
+        "name": "Gustavo Lima",
+        "email": "gustavo.lima@example.com",
+        "telefone": "(81) 92345-6789",
+        "address": "Avenida dos Coqueiros, 876, Recife - PE",
+        "password": "RandomPassword876"
+      },
+      {
+        "name": "Carolina Almeida",
+        "email": "carolina.almeida@example.com",
+        "telefone": "(91) 91234-5678",
+        "address": "Rua das Orquídeas, 543, Belém - PA",
+        "password": "RandomPassword543"
+      },
+      {
+        "name": "André Souza",
+        "email": "andre.souza@example.com",
+        "telefone": "(99) 98765-4321",
+        "address": "Avenida das Acácias, 234, São Luís - MA",
+        "password": "RandomPassword234"
+      }
+]

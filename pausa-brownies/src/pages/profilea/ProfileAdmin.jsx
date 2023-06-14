@@ -6,11 +6,9 @@ import PausaButton from "../components/Buttons/PausaButton/PausaButton";
 import ProductMainCard from "../components/ProductMainCard/ProductMainCard";
 import brownieData from "../../mock/brownieData.json"
 import SearchBar from "../components/SearchBar/SearchBar";
-
-
 import { ReactComponent as ProfileIcon } from "./assets/profilea.svg";
 import { ReactComponent as EditIcon } from "./assets/pencil.svg";
-import { ReactComponent as RealBrownie } from "./assets/RealBrownie.svg";
+
 
 
 
@@ -19,6 +17,7 @@ const ProfileAdmin = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [selectedBrownie, setSelectedBrownie] = useState(null);
     
+
     const handleSearch = (e) => {
         const query = e.target.value.toLowerCase();
         setSearchQuery(query);
@@ -29,6 +28,8 @@ const ProfileAdmin = () => {
         setSearchResults(results);
         setSelectedBrownie(null);
     };
+
+    const totalStock = brownieData.reduce((total, item) => total + item.stock, 0);
     
     const handleBrownieClick = (brownie) => {
         setSelectedBrownie(brownie);
@@ -160,18 +161,21 @@ const ProfileAdmin = () => {
                 </div>
             </div>
             <div className="search-bar-products centered-content">
-            <SearchBar
+                <SearchBar
                         searchQuery={searchQuery}
                         handleSearch={handleSearch}
-                    />
+                        placeholder={"Buscar Produtos para Gerenciar"}
+                />
             </div>
             <div className="product-show-wrapper">
                 {searchResults.length > 0 && !selectedBrownie && (
-                <div className="products-results-wrapper">
-                    <h3>Resultados da busca:</h3>
+                <div className="products-results-wrapper centered-content">
+                    <div className="search-title shaded-text">
+                        Resultados da busca (clique no produto para gerenciar):
+                    </div>
                      <ul>
                         {searchResults.map((item) => (
-                            <li key={item.id} onClick={() => handleBrownieClick(item)}>
+                            <li className="search-result" key={item.id} onClick={() => handleBrownieClick(item)}>
                                 {item.name}
                             </li>
                         ))}
@@ -207,7 +211,7 @@ const ProfileAdmin = () => {
                             </div>
                             <div className="products-count centered-content">
                                 <div className="text-title shaded-text">Produtos em Estoque:</div>
-                                <div className="text-content">27</div>
+                                <div className="text-content">{totalStock}</div>
                             </div>
                             <div className="sales-count centered-content">
                                 <div className="text-title shaded-text">Vendas Totais:</div>
