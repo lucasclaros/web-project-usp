@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Brownie Tradicional",
+    "ingredients": "Massa de chocolate, sem recheio",
+    "price": "6 reais no pix ou dinheiro",
+    "imgPath": "./assets/tradicional.jpg",
+    "stock": 15
+  },
+  {
+    "name": "Brownie de Brigadeiro",
+    "ingredients": "Massa de chocolate, recheio de brigadeiro",
+    "price": "8 reais no pix ou dinheiro",
+    "imgPath": "./assets/brigadeiro.jpg",
+    "stock": 15
+  },
+  {
+    "name": "Brownie de Doce de leite",
+    "ingredients": "Massa de chocolate, recheio de doce de leite",
+    "price": "7 reais no pix ou dinheiro",
+    "imgPath": "./assets/doce_de_leite.jpg",
+    "stock": 15
+  },
+  {
+    "name": "Tijolinho",
+    "ingredients": "Massa de chocolate, sem recheio",
+    "price": "5 reais no pix ou dinheiro",
+    "imgPath": "./assets/tijolinho.jpg",
+    "stock": 15
+  }
+]

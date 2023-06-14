@@ -1,41 +1,31 @@
 import React from "react";
 import "./ProductCard.css";
 import PausaButton from "../Buttons/PausaButton/PausaButton";
-import { ReactComponent as ShoppingCart } from './assets/shopping-cart.svg';
-import { ReactComponent as AddProduct } from './assets/plus-sign.svg';
-import { ReactComponent as RemoveProduct } from './assets/minus-sign.svg';
-import { ReactComponent as BrownieStack } from './assets/brownie.svg';
+import { ReactComponent as ShoppingCart } from "./assets/shopping-cart.svg";
+import { ReactComponent as AddProduct } from "./assets/plus-sign.svg";
+import { ReactComponent as RemoveProduct } from "./assets/minus-sign.svg";
+import { ReactComponent as BrownieStack } from "./assets/brownie.svg";
 
-const ProductCard = ({ button1, button2 }) => {
+const ProductCard = ({ product, button1, button2 }) => {
+    const cartQtt = 0;
     return (
-
         <div className="product-description product-card">
             <div className="product-info">
                 <div className="product-info-container">
-                    <div className="product-title shaded-text">
-                        Produto:
-                    </div>
-                    <div className="product-text">
-                        Brownie Tradicional
-                    </div>
+                    <div className="product-title shaded-text">Produto:</div>
+                    <div className="product-text">{product.name}</div>
+                </div>
+
+                <div className="product-info-container">
+                    <div className="product-title shaded-text">Valor:</div>
+                    <div className="product-text">{product.price}</div>
                 </div>
 
                 <div className="product-info-container">
                     <div className="product-title shaded-text">
-                        Valor:
+                        Ingredientes:
                     </div>
-                    <div className="product-text">
-                        6 reais no PIX
-                    </div>
-                </div>
-
-                <div className="product-info-container">
-                    <div className="product-title shaded-text">
-                        Keywords:
-                    </div>
-                    <div className="product-text">
-                        Chocolate, Tradicional, Sem Recheio
-                    </div>
+                    <div className="product-text">{product.ingredients}</div>
                 </div>
             </div>
             <div className="product-management">
@@ -53,7 +43,7 @@ const ProductCard = ({ button1, button2 }) => {
                             <AddProduct />
                         </div>
                         <div className="cart-quantity-container">
-                            <p className="cart-quantity">0</p>
+                            <p className="cart-quantity">{cartQtt}</p>
                         </div>
                     </div>
                 </div>
@@ -69,8 +59,7 @@ const ProductCard = ({ button1, button2 }) => {
                 </div>
             </div>
         </div>
-
     );
-}
+};
 
 export default ProductCard;

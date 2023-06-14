@@ -1,11 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
-
-
 .product-description {
     display: flex;
     flex-direction: column;
-    font-family: 'Lilita One', cursive;
-    border-radius: 16px 16px 16px 16px;
+    border-radius: 16px;
     height: 24em;
     width: 36em;
 }
@@ -25,13 +21,6 @@
     flex-direction: row;
     justify-content: space-between;
     height: 12em;
-
-}
-
-
-.shaded-text {
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    color: white;
 }
 
 .product-info-container {
@@ -65,7 +54,7 @@
     text-align: center;
 }
 
-.product-info>*:first-child {
+.product-info > *:first-child {
     border-radius: 16px 16px 0 0;
 }
 
@@ -76,7 +65,6 @@
     position: relative;
     background-color: #fff;
     width: 18em;
-
 }
 
 .product-cart-bar {
@@ -86,7 +74,6 @@
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
-
 }
 
 .product-details {
@@ -96,14 +83,12 @@
     position: relative;
     background-color: #fff;
     width: 18em;
-
 }
 
 .product-cart-svg {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-
 }
 
 .product-cart-svg svg {
@@ -122,7 +107,6 @@
     font-size: 20px;
     border: 1px solid black;
     width: 4em;
-
 }
 
 .product-details-svg {
@@ -133,7 +117,6 @@
     align-items: center;
     width: 100%;
 }
-
 
 .product-cart-button-wrapper {
     display: flex;
@@ -146,9 +129,7 @@
     width: 8em;
     margin-top: 0.5em;
     box-shadow: 0px 0.25em 0.25em rgba(0, 0, 0, 0.25);
-
 }
-
 
 .product-edit-button-wrapper {
     display: flex;

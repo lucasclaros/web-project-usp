@@ -88,11 +88,11 @@ const Navbar = () => {
             </nav>
             <div id="test" className="test-aside">
                 <NavbarItem onClick={toggleNavbar} path="/" content="Home" />
-                {/* <NavbarItem
+                <NavbarItem
                     onClick={toggleNavbar}
                     path="/menu"
                     content="Cardápio"
-                /> */}
+                />
                 <NavbarItem
                     onClick={toggleNavbar}
                     path="/contact"
