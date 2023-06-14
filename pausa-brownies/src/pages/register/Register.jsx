@@ -6,7 +6,9 @@ import PausaButton from "../components/Buttons/PausaButton/PausaButton";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 
+
 const Register = () => {
+    
     const navigate = useNavigate();
     const { formValues, handleInputChange } = useForm({
         name: "",

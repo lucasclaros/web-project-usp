@@ -7,6 +7,7 @@ import PausaButton from "../components/Buttons/PausaButton/PausaButton";
 import brownieData from "../../mock/brownieData.json"
 
 
+
 const Description = () => {
     const { id } = useParams();
     const brownie = brownieData.find((brownie) => brownie.id.toString() === id);
