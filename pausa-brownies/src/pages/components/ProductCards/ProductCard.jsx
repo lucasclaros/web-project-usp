@@ -7,7 +7,7 @@ import { ReactComponent as RemoveProduct } from './assets/minus-sign.svg';
 import { ReactComponent as BrownieStack } from './assets/brownie.svg';
 
 const ProductCard = ({ button1, button2, name, price, keywords}) => {
-    const formattedPrice = value.toLocaleString('pt-BR', {
+    const formattedPrice = price.toLocaleString('pt-BR', {
         style: 'currency',
         currency: 'BRL'
       });
