@@ -4,6 +4,6 @@
 }
 
 .product-management-image  {
-    width: 29vw;
+    width: max(420px, 29vw);
     height: auto;
 }

@@ -16,9 +16,9 @@ const PromoSection = () => {
                     style={{ flexDirection: isMobile ? "column" : "row" }}
                     className="centered-content"
                 >
-                    <PromoCard icon={RegisterIcon} buttonText={"Cadastre-se"} />
+                    <PromoCard icon={RegisterIcon} to={"/register"} buttonText={"Cadastre-se"} />
                     {!isMobile && <CardPicker className="card-picker" />}
-                    <PromoCard icon={LoginIcon} buttonText={"Faça seu login"} />
+                    <PromoCard icon={LoginIcon} to={"/login"} buttonText={"Faça seu login"} />
                 </div>
             }
         />

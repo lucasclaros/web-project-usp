@@ -1,4 +1,4 @@
-.product-description-info-wrapper .info-section-container {
+/* .product-management-info-wrapper .info-section-container {
     padding: 40px 0;
     border: 0 solid black;
     background-color: transparent;
@@ -6,15 +6,15 @@
 
 }
 
-.product-description-image {
+.product-management-image {
     margin: 2rem auto;
 }
 
-.product-description-content {
+.product-management-content {
     flex-direction: column;
 }
 
-.product-description-info {
+.product-management-info {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,11 +26,11 @@
     padding: 0;
 }
 
-.product-name,
-.product-price,
-.product-ingredients,
-.product-stock,
-.product-friends {
+.management-product-name,
+.management-product-price,
+.management-product-ingredients,
+.management-product-stock,
+.management-product-friends {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -41,32 +41,32 @@
     height: 3rem;
 }
 
-.product-name {
+.management-product-name {
     border-radius: 16px 16px 0 0;
     border: 1px solid black;
 }
 
-.product-price,
-.product-ingredients,
-.product-stock {
+.management-product-price,
+.management-product-ingredients,
+.management-product-stock {
     border: 1px solid black;
     border-top: none;
 
 }
 
-.product-friends {
+.management-product-friends {
     border-radius: 0 0 16px 16px;
     border: 1px solid black;
     border-top: none;
 }
 
-.product-description-info .text-title {
+.product-management-info .text-title {
     flex: 1;
     font-size: 24px;
     margin-left: 2rem;
 }
 
-.product-description-info .text-content {
+.product-management-info .text-content {
     flex: 2;
     font-size: 24px;
     text-align: center;
@@ -109,11 +109,11 @@
 }
 
 
-.description-buttons {
+.management-buttons {
     margin-bottom: 1rem;
 }
 
-.description-buttons .pausa-button {
+.management-buttons .pausa-button {
     box-shadow: 0px 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
     margin: 1rem;
-}
+} */

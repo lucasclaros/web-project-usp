@@ -53,9 +53,11 @@ const Description = () => {
                             <div className="description-buttons">
                                 <PausaButton
                                     buttonText={"Adicionar ao Carrinho"}
+                                    to={"/cart"}
                                 />
                                 <PausaButton
                                     buttonText={"Voltar ao Cardápio"}
+                                    to={"/menu"}
                                 />
                             </div>
                         </div>

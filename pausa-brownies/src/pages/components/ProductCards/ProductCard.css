@@ -1,11 +1,9 @@
-
-
 .product-description {
     display: flex;
     flex-direction: column;
     border-radius: 16px 16px 16px 16px;
-    height: 42vh;
-    width: 32vw;
+    height: max(300px,42vh);
+    width: max(410px,32vw);
 }
 
 .product-info {
@@ -15,15 +13,15 @@
     border-radius: 16px 16px 0 0;
     background-color: #fff;
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
-    height: 21vh;
+    height: max(150px,21vh);
 }
 
 .product-management {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 21vh;
-    width: 32vw;
+    height: max(150px,21vh);
+    width: max(410px,32vw);
 
 }
 
@@ -38,9 +36,9 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    width: 32vw;
+    width: max(410px,32vw);
     border: 1px solid black;
-    height: 7vh;
+    height: max(50px,7vh);
 }
 
 .product-info p {
@@ -75,7 +73,7 @@
     border-top: none;
     position: relative;
     background-color: #fff;
-    width: 16vw;
+    width: max(205px, 16vw);
 
 }
 
@@ -85,8 +83,9 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 16vw;
-    height: 7vh;
+    width: max(205px, 16vw);
+    height: max(50px,7vh);
+
 
 
 }
@@ -97,7 +96,7 @@
     border-top: none;
     position: relative;
     background-color: #fff;
-    width: 16vw;
+    width: max(205px, 16vw);
 
 }
 
@@ -105,13 +104,13 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 9vw;
+    width: max(116px,9vw);
 
 }
 
 .product-cart-svg svg {
     padding: 0 0.5rem;
-    width: 2.9vw;
+    width: max(38px,2.9vw);
 }
 
 .cart-quantity-container {
@@ -124,7 +123,7 @@
     padding: 0.5rem 1rem;
     font-size: 20px;
     border: 1px solid black;
-    width: 6vw;
+    width: max(77px, 6vw);
 
 }
 
@@ -135,11 +134,13 @@
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
-    height: 7vh;
+    height: max(50px,7vh);
+
 }
 
 .product-details-svg svg {
-    height: 8vh;
+    height: max(58px,8vh);
+
     width: auto;
 }
 
@@ -149,12 +150,14 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 14vh;
+    height: max(100px,14vh);
+
 }
 
 .product-cart-button a {
-    width: 14vw;
-    margin-top: 0.5em;
+    width: max(180px,14vw);
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
     box-shadow: 0px 0.25em 0.25em rgba(0, 0, 0, 0.25);
     font-size: clamp(12px, 1rem + 2vw, 24px);
 
@@ -166,12 +169,14 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 14vh;
+    height: max(100px,14vh);
+
 }
 
 .product-edit-button a {
-    margin-top: 0.5em;
-    width: 14vw;
+    width: max(180px,14vw);
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
     box-shadow: 0px 0.25em 0.25em rgba(0, 0, 0, 0.25);
     font-size: clamp(12px, 1rem + 2vw, 24px);
 }

@@ -1,11 +1,25 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./PausaButton.css";
 
-const PausaButton = ({ href, buttonText, onClick }) => {
+const PausaButton = ({ to, buttonText, onClick }) => {
+    const navigate = useNavigate();
+
+    const handleClick = (event) => {
+      event.preventDefault();
+  
+      if (onClick) {
+        onClick();
+      }
+  
+      if (to) {
+        navigate(to);
+      }
+    };
     return (
-        <a href={href} onClick={onClick} className="shaded-text pausa-button">
+        <Link to={to} onClick={handleClick} className="shaded-text pausa-button">
             <div>{buttonText}</div>
-        </a>
+        </Link>
     );
 };
 

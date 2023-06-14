@@ -31,6 +31,7 @@ const Menu = () => {
                     <SearchBar
                         searchQuery={searchQuery}
                         handleSearch={handleSearch}
+                        placeholder={"Pesquise por nome, ingredientes, etc."}
                     />
                 </div>
                 {searchResults.length > 0 ? (
