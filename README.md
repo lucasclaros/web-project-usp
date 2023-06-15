@@ -83,4 +83,9 @@ npm install
 ```
 npm start
 ```
+
+## Problemas Enfrentados:
+
+- Escrita no JSON e integração do JSON com LocalStorage (Será resolvido na Entrega Final)
+
 ## Comentários
