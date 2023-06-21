@@ -162,7 +162,7 @@ const ProfileAdmin = () => {
                                             </div>
                                             <div className="user-info-edit centered-content">
                                                 <PausaTextField
-                                                    value={selectedUser.telefone}
+                                                    value={selectedUser.phone}
                                                     label={"Telefone"}
                                                     disabled={"true"}
                                                     handleChange={handleChange}
