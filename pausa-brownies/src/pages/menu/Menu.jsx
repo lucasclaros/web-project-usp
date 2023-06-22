@@ -5,6 +5,7 @@ import brownieData from "../../mock/brownieData.json";
 import SearchBar from "../components/SearchBar/SearchBar";
 
 const Menu = () => {
+  const [cart, setCart] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -20,6 +21,13 @@ const Menu = () => {
         item.vaiBemCom.join(" ").toLowerCase().includes(query)
     );
     setSearchResults(results);
+  };
+
+  const addToCart = (item, quantity) => {
+    console.log("Adding to cart:", item, quantity);
+    const updatedCart = [...cart, { item, quantity }];
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   return (
@@ -41,7 +49,8 @@ const Menu = () => {
                 keywords={item.keywords.join(", ")}
                 button1={"Adicionar ao carrinho"}
                 button2={"Ver Detalhes"}
-                to={`/description/${item.id}`}
+                button2to={`/description/${item.id}`}
+                onClick1={() => addToCart(item, 1)}
               />
             </div>
           ))}
@@ -56,7 +65,8 @@ const Menu = () => {
                 keywords={item.keywords.join(", ")}
                 button1={"Adicionar ao carrinho"}
                 button2={"Ver Detalhes"}
-                to={`/description/${item.id}`}
+                button2to={`/description/${item.id}`}
+                onClick1={() => addToCart(item, 1)}
               />
             </div>
           ))}

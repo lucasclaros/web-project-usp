@@ -18,9 +18,10 @@ import { useState } from "react";
 
 function App() {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+    const [cart, setCart] = useState([]);
 
     return (
-        <UserContext.Provider value={{ user, setUser }}>
+        <UserContext.Provider value={{ user, setUser, cart, setCart }}>
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} exact />
