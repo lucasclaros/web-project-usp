@@ -3,6 +3,8 @@ import "./Cart.css";
 import CartItem from "../components/CartItem/CartItem";
 import InfoCard from "../components/InfoCards/InfoCard";
 import UserContext from "../../context/UserContext";
+import PausaButton from "../components/Buttons/PausaButton/PausaButton";
+import { ReactComponent as EmptyCart } from "./assets/empty-cart.svg";
 
 const Cart = () => {
   const { cart, setCart } = useContext(UserContext);
@@ -13,7 +15,6 @@ const Cart = () => {
       setCart(storedCart);
     }
   }, []);
-  
 
   return (
     <div className="cart-wrapper">
@@ -22,14 +23,33 @@ const Cart = () => {
           header={"Carrinho"}
           body={
             <>
-              {cart.map((item, index) => (
-                <CartItem
-                  key={index}
-                  price={item.item.price}
-                  name={item.item.name}
-                  quantity={item.quantity}
-                />
-              ))}
+              {cart.length > 0 ? (
+                <>
+                  {cart.map((item, index) => (
+                    <CartItem
+                      key={index}
+                      price={item.item.price}
+                      name={item.item.name}
+                      quantity={item.quantity}
+                    />
+                  ))}
+                  <div className="cart-button-clear">
+                    <PausaButton
+                      label={"Limpar carrinho"}
+                      buttonText={"Limpar carrinho"}
+                      onClick={() => {
+                        localStorage.removeItem("cart");
+                        setCart([]);
+                      }}
+                    />
+                  </div>
+                </>
+              ) : (
+                <div className="empty-cart">
+                  <EmptyCart />
+                  <p className="shaded-text">Seu carrinho está vazio.</p>
+                </div>
+              )}
             </>
           }
         />

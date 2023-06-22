@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Menu.css";
 import ProductMainCard from "../components/ProductMainCard/ProductMainCard";
 import brownieData from "../../mock/brownieData.json";
 import SearchBar from "../components/SearchBar/SearchBar";
+import UserContext from "../../context/UserContext";
 
 const Menu = () => {
-  const [cart, setCart] = useState([]);
+  const { cart, setCart } = useContext(UserContext);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -24,10 +25,18 @@ const Menu = () => {
   };
 
   const addToCart = (item, quantity) => {
-    console.log("Adding to cart:", item, quantity);
-    const updatedCart = [...cart, { item, quantity }];
-    setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    const existingCartItem = cart.find((cartItem) => cartItem.item.id === item.id);
+    if (existingCartItem) {
+      const updatedCart = cart.map((cartItem) =>
+        cartItem.item.id === item.id ? { ...cartItem, quantity: cartItem.quantity + quantity } : cartItem
+      );
+      setCart(updatedCart);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    } else {
+      const updatedCart = [...cart, { item, quantity }];
+      setCart(updatedCart);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    }
   };
 
   return (
