@@ -25,11 +25,11 @@ const Menu = () => {
   };
 
   const addToCart = (item, quantity) => {
-    const existingCartItem = cart.find((cartItem) => cartItem.item.id === item.id);
-    if (existingCartItem) {
-      const updatedCart = cart.map((cartItem) =>
-        cartItem.item.id === item.id ? { ...cartItem, quantity: cartItem.quantity + quantity } : cartItem
-      );
+    const existingCartItemIndex = cart.findIndex((cartItem) => cartItem.item.id === item.id);
+  
+    if (existingCartItemIndex !== -1) {
+      const updatedCart = [...cart];
+      updatedCart[existingCartItemIndex].quantity += quantity;
       setCart(updatedCart);
       localStorage.setItem("cart", JSON.stringify(updatedCart));
     } else {
