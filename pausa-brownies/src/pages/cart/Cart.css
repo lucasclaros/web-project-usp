@@ -1,0 +1,36 @@
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.cart-button-clear {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 2vh;
+}
+
+.cart-button-clear .pausa-button {
+    background-color: red;
+}
+
+.empty-cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:5vh;
+    margin: 2vh;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    text-align: center;
+}
+
+
+.empty-cart svg {
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    max-height: 300px;
+    margin: 0 auto;
+}

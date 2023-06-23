@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./Menu.css";
 import ProductMainCard from "../components/ProductMainCard/ProductMainCard";
 import brownieData from "../../mock/brownieData.json";
 import SearchBar from "../components/SearchBar/SearchBar";
+import UserContext from "../../context/UserContext";
 
 const Menu = () => {
+    const { cart, setCart } = useContext(UserContext);
     const [searchQuery, setSearchQuery] = useState("");
     const [searchResults, setSearchResults] = useState(brownieData);
 
@@ -27,6 +29,23 @@ const Menu = () => {
         setSearchResults(results);
     }, [searchQuery]);
 
+    const addToCart = (item, quantity) => {
+        const existingCartItemIndex = cart.findIndex(
+            (cartItem) => cartItem.item.id === item.id
+        );
+
+        if (existingCartItemIndex !== -1) {
+            const updatedCart = [...cart];
+            updatedCart[existingCartItemIndex].quantity += quantity;
+            setCart(updatedCart);
+            localStorage.setItem("cart", JSON.stringify(updatedCart));
+        } else {
+            const updatedCart = [...cart, { item, quantity }];
+            setCart(updatedCart);
+            localStorage.setItem("cart", JSON.stringify(updatedCart));
+        }
+    };
+
     return (
         <div className="menu-wrapper">
             <div className="menu-search-bar">
@@ -36,20 +55,37 @@ const Menu = () => {
                     placeholder={"Pesquise por nome, ingredientes, etc."}
                 />
             </div>
-            <div className="menu-total-card-wrapper">
-                {searchResults.map((item) => (
-                    <div className="menu-card-wrapper" key={item.id}>
-                        <ProductMainCard
-                            name={item.name}
-                            price={item.price}
-                            keywords={item.keywords.join(", ")}
-                            button1={"Adicionar ao carrinho"}
-                            button2={"Ver Detalhes"}
-                            to={`/description/${item.id}`}
-                        />
-                    </div>
-                ))}
-            </div>
+            {searchResults.length > 0 ? (
+                <div className="menu-total-card-wrapper">
+                    {searchResults.map((item) => (
+                        <div className="menu-card-wrapper" key={item.id}>
+                            <ProductMainCard
+                                name={item.name}
+                                price={item.price}
+                                keywords={item.keywords.join(", ")}
+                                button={"Adicionar ao carrinho"}
+                                to={`/description/${item.id}`}
+                                onClick={() => addToCart(item, 1)}
+                            />
+                        </div>
+                    ))}
+                </div>
+            ) : (
+                <div className="menu-total-card-wrapper">
+                    {brownieData.map((item) => (
+                        <div className="menu-card-wrapper" key={item.id}>
+                            <ProductMainCard
+                                name={item.name}
+                                price={item.price}
+                                keywords={item.keywords.join(", ")}
+                                button={"Adicionar ao carrinho"}
+                                to={`/description/${item.id}`}
+                                onClick={() => addToCart(item, 1)}
+                            />
+                        </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 };

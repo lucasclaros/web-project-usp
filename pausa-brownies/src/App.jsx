@@ -15,12 +15,15 @@ import Management from "./pages/management/Management";
 import CartItem from "./pages/components/CartItem/CartItem";
 import Cart from "./pages/cart/Cart";
 import { useState } from "react";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 function App() {
+    const isMobile = useMediaQuery("(max-width: 960px)");
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+    const [cart, setCart] = useState([]);
 
     return (
-        <UserContext.Provider value={{ user, setUser }}>
+        <UserContext.Provider value={{ user, setUser, cart, setCart }}>
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} exact />
@@ -31,14 +34,17 @@ function App() {
                 <Route path="/register" element={<Register />} exact />
                 <Route path="/profileu" element={<ProfileUser />} exact />
                 <Route path="/profilea" element={<ProfileAdmin />} exact />
-                <Route path="/description/:id" element={<Description />} exact />
+                <Route
+                    path="/description/:id"
+                    element={<Description />}
+                    exact
+                />
                 <Route path="/management" element={<Management />} exact />
                 <Route path="/cartitem" element={<CartItem />} exact />
                 <Route path="/cart" element={<Cart />} exact />
-
             </Routes>
             {/* Navbar compensation */}
-            <div style={{ height: "80px" }}></div>
+            <div style={{ height: isMobile ? "150px" : "80px" }}></div>
             <Footer />
         </UserContext.Provider>
     );

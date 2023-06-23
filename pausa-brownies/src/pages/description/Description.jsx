@@ -1,18 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import "./Description.css";
 import InfoCard from "../components/InfoCards/InfoCard";
 import RealBrownie from "../profilea/assets/RealBrownie.svg";
 import PausaButton from "../components/Buttons/PausaButton/PausaButton";
 import brownieData from "../../mock/brownieData.json";
+import UserContext from "../../context/UserContext";
 
 const Description = () => {
     const { id } = useParams();
+    const { setCart } = useContext(UserContext);
+
     const brownie = brownieData.find((brownie) => brownie.id.toString() === id);
     const formattedPrice = brownie.price.toLocaleString("pt-BR", {
         style: "currency",
         currency: "BRL",
     });
+
+    const addToCart = (item, quantity) => {
+        const updatedCart = [
+            ...JSON.parse(localStorage.getItem("cart") || "[]"),
+            { item, quantity },
+        ];
+        setCart(updatedCart);
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+    };
 
     return (
         <div className="description-wrapper">
@@ -96,6 +108,7 @@ const Description = () => {
                                 <PausaButton
                                     buttonText={"Adicionar ao Carrinho"}
                                     to={"/cart"}
+                                    onClick={() => addToCart(brownie, 1)}
                                 />
                                 <PausaButton
                                     buttonText={"Voltar ao Cardápio"}

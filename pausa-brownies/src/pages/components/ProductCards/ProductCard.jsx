@@ -4,11 +4,8 @@ import PausaButton from "../Buttons/PausaButton/PausaButton";
 import { ReactComponent as ShoppingCart } from "./assets/shopping-cart.svg";
 import { ReactComponent as AddProduct } from "./assets/plus-sign.svg";
 import { ReactComponent as RemoveProduct } from "./assets/minus-sign.svg";
-import { ReactComponent as BrownieStack } from "./assets/brownie.svg";
-import { useMediaQuery } from "@uidotdev/usehooks";
 
-const ProductCard = ({ button1, button2, name, price, keywords, to }) => {
-    const isMobile = useMediaQuery("(max-width: 960px)");
+const ProductCard = ({ button, name, price, keywords, to, onClick }) => {
     const formattedPrice = price.toLocaleString("pt-BR", {
         style: "currency",
         currency: "BRL",
@@ -43,7 +40,11 @@ const ProductCard = ({ button1, button2, name, price, keywords, to }) => {
                     </div>
 
                     <div className="product-button">
-                        <PausaButton buttonText={button1} to={to} />
+                        <PausaButton
+                            buttonText={button}
+                            to={to}
+                            onClick={onClick}
+                        />
                     </div>
                 </div>
             </div>

@@ -32,6 +32,9 @@ const Login = () => {
     );
 
     if (user || (localUser && formValues.email === localUser.email && formValues.password === localUser.password)) {
+      if (user) {
+        localStorage.setItem("user", JSON.stringify(user));
+      }
       setUser(user || localUser);
       window.scrollTo({ top: 0, behavior: "smooth" });
       navigate("/");

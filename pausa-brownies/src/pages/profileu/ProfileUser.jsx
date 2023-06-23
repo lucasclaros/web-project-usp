@@ -24,7 +24,8 @@ const ProfileUser = () => {
 
   const { user, setUser } = useContext(UserContext);
 
-  const handleLogout = () => {
+  const handleLogout = (event) => {
+    event.preventDefault();
     localStorage.removeItem("user");
     setUser(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -72,7 +73,7 @@ const ProfileUser = () => {
               </div>
               <div className="profile-options">
                 <PausaButton
-                  buttonText={"Excluir perfil"}
+                  buttonText={"Logout"}
                   onClick={handleLogout}
                 />
               </div>

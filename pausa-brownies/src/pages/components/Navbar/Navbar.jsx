@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import NavbarItem from "./components/NavbarItem";
 import PausaLogo from "../Logo/Logo";
 import { ReactComponent as ProfileIcon } from "./assets/woman.svg";
-import { ReactComponent as ProfileIcon2 } from "./assets/woman.svg";
 import "./Navbar.css";
 import UserContext from "../../../context/UserContext";
 import { AiOutlineMenu } from "react-icons/ai";
@@ -31,9 +30,9 @@ const Navbar = () => {
     };
 
     const toggleNavbar = () => {
-        const navItems = document.querySelector(".test-aside");
-        navItems.classList.toggle("test-aside-active");
-        if (navItems.classList.contains("test-aside-active")) {
+        const navItems = document.querySelector(".aside");
+        navItems.classList.toggle("aside-active");
+        if (navItems.classList.contains("aside-active")) {
             setIsNavbarActive(true);
             disableScroll();
         } else {
@@ -88,7 +87,7 @@ const Navbar = () => {
                     />
                 )}
             </nav>
-            <div id="test" className="test-aside">
+            <div className="aside">
                 <NavbarItem onClick={toggleNavbar} path="/" content="Home" />
                 <NavbarItem
                     onClick={toggleNavbar}
@@ -102,6 +101,7 @@ const Navbar = () => {
                 />
                 <NavbarItem
                     onClick={toggleNavbar}
+                    i
                     path="/about"
                     content="Sobre"
                 />
