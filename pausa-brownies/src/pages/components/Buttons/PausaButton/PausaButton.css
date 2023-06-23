@@ -2,7 +2,7 @@
     overflow: hidden;
     position: relative;
     background-color: #b86e4c;
-    width: clamp(100px, 30vw, 320px);
+    max-width: clamp(100px, 30vw, 320px);
     height: 80px;
     margin: 0 20px;
     padding: clamp(0px, 1vw, 40px);

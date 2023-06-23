@@ -7,8 +7,10 @@ import "./Navbar.css";
 import UserContext from "../../../context/UserContext";
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoMdClose } from "react-icons/io";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 const Navbar = () => {
+    const isMobile = useMediaQuery("(max-width: 960px)");
     const [isNavbarActive, setIsNavbarActive] = useState(false);
     const { user } = useContext(UserContext);
     useEffect(() => {}, [user]);
@@ -48,7 +50,7 @@ const Navbar = () => {
     return (
         <header>
             <nav className="nav-bar">
-                <PausaLogo short={false} />
+                <PausaLogo short={isMobile} />
                 <ul id="nav-items" className="nav-items">
                     <NavbarItem path="/" content="Home" />
                     <NavbarItem path="/menu" content="Cardápio" />
@@ -88,11 +90,11 @@ const Navbar = () => {
             </nav>
             <div id="test" className="test-aside">
                 <NavbarItem onClick={toggleNavbar} path="/" content="Home" />
-                {/* <NavbarItem
+                <NavbarItem
                     onClick={toggleNavbar}
                     path="/menu"
                     content="Cardápio"
-                /> */}
+                />
                 <NavbarItem
                     onClick={toggleNavbar}
                     path="/contact"
