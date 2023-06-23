@@ -57,7 +57,7 @@ const Navbar = () => {
                     <NavbarItem path="/about" content="Sobre" />
                     <NavbarItem
                         isLogin={true}
-                        path={user ? "/profileu" : "/login"}
+                        path={user ? (user.email === "admin" ? "/profileA" : "/profileu") : "/login"}
                         content={
                             <div
                                 className="centered-content"
@@ -67,7 +67,7 @@ const Navbar = () => {
                                 }}
                             >
                                 <ProfileIcon />
-                                {user ? "Perfil" : "Login"}
+                                {user ? (user.email === "admin" ? "Admin" : "Perfil") : "/login"}
                             </div>
                         }
                     />
