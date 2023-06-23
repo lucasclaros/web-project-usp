@@ -6,18 +6,18 @@ const PausaButton = ({ to, buttonText, onClick }) => {
     const navigate = useNavigate();
 
     const handleClick = (event) => {
-      if (onClick) {
-        onClick(event);
-      }
-  
-      if (to) {
-        navigate(to);
-      }
+        if (onClick) {
+            onClick(event);
+        }
     };
 
     return (
-        <Link to={to} onClick={handleClick} className="shaded-text pausa-button">
-            <div  >{buttonText}</div>
+        <Link
+            to={to}
+            onClick={handleClick}
+            className="shaded-text pausa-button"
+        >
+            <div>{buttonText}</div>
         </Link>
     );
 };
