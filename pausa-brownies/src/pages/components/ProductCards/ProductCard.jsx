@@ -46,26 +46,6 @@ const ProductCard = ({ button1, button2, name, price, keywords, to }) => {
                         <PausaButton buttonText={button1} to={to} />
                     </div>
                 </div>
-                {/* <div className="product-cart">
-                    <div className="product-button">
-                        <PausaButton buttonText={button2} to={to} />
-                    </div>
-
-                    <div className="product-details-svg centered-content">
-                        <BrownieStack />
-                    </div>
-                </div> */}
-                {/* {!isMobile && (
-                    <div className="product-details">
-                        <div className="product-button">
-                            <PausaButton buttonText={button2} to={to} />
-                        </div>
-
-                        <div className="product-details-svg centered-content">
-                            <BrownieStack />
-                        </div>
-                    </div>
-                )} */}
             </div>
         </div>
     );
