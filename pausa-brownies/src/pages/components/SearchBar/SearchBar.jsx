@@ -14,7 +14,7 @@ const SearchBar = ({ searchQuery, handleSearch, placeholder }) => {
                 placeholder={placeholder}
                 value={searchQuery}
                 onChange={handleSearch}
-                enabled
+                spellCheck="off"
             />
         </div>
     );
