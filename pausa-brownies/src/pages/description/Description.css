@@ -1,33 +1,32 @@
-
+.product-description-wrapper {
+    flex-direction: column;
+    margin: 20px 0;
+}
 
 .product-description-image {
-    margin: 2rem auto;
-    width: max(480px, 52vw);
+    width: 80%;
+    flex: 1;
+}
+
+.product-description-image img {
+    width: 80%;
+}
+
+.product-description-info-wrapper {
+    width: 100%;
 }
 
 .product-description-info-wrapper .info-section-container {
-    padding: 40px 0;
-    border: 0 solid black;
     background-color: transparent;
-    width: max(600px,70vw);
-
-}
-
-.product-description-content {
-    flex-direction: column;
+    border: none;
 }
 
 .product-description-info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    gap: 0px;
-    margin: 1vw auto;
+    margin: 30px 0;
     border-radius: 16px;
-    width: 52vw;
-    padding: 0;
-    height: auto;
+    width: 100%;
+    padding: 0 30px;
 }
 
 .product-name,
@@ -35,16 +34,14 @@
 .product-ingredients,
 .product-stock,
 .product-friends {
-    display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
     background-color: white;
     border: 1px solid black;
-    width:max(470px,48vw);
-    height: max(60px,10vh);
-
+    width: 100%;
+    height: 100%;
+    padding: 20px 0;
+    gap: 20px;
+    overflow: hidden;
 }
 
 .product-name {
@@ -57,7 +54,6 @@
 .product-stock {
     border: 1px solid black;
     border-top: none;
-
 }
 
 .product-friends {
@@ -74,33 +70,26 @@
 
 .product-description-info .text-content {
     flex: 2;
-    font-size: 24px;
+    font-size: clamp(1rem, 1rem + 0.4vw, 1.5rem);
     text-align: center;
 }
 
 .product-comments {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    gap: 0px;
-    margin-top: 1rem;
     border-radius: 16px;
-    width: max(470px,48vw);
+    margin-top: 20px;
+    width: 100%;
     height: max(180px, 30vh);
     padding: 0;
-
 }
 
 .comment-text {
-    margin: 0;
     background-color: white;
-    width: max(470px,48vw);
-    height: max(60px,10vh);
+    height: max(60px, 10vh);
     text-align: center;
     border: 1px solid black;
-    padding: 3vh 0;
-    font-size: 24px;
+    padding: 20px;
+    font-size: clamp(1rem, 1rem + 0.4vw, 1.5rem);
 }
 
 .comment-text:first-of-type {
@@ -115,12 +104,27 @@
     border-top: none;
 }
 
-
 .description-buttons {
-    margin-bottom: 1rem;
+    width: 100%;
 }
 
-.description-buttons .pausa-button {
-    box-shadow: 0px 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
-    margin: 1rem;
+.description-buttons a {
+    width: 100%;
+    font-size: clamp(1rem, 1rem + 0.5vw, 1.5rem);
+}
+@media screen and (max-width: 960px) {
+    .description-buttons {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .text-title {
+        font-size: 10px;
+    }
+    .product-name,
+    .product-price,
+    .product-ingredients,
+    .product-stock,
+    .product-friends {
+        flex-direction: column;
+    }
 }

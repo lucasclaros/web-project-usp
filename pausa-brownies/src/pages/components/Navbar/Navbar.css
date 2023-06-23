@@ -22,17 +22,13 @@ header {
     display: flex;
 }
 
-.aside-wrapeper {
-    display: flex;
-    margin-right: -200px;
-}
-
 .hamburger-icon {
     display: none;
     color: #b86e4c;
 }
 
-.test-aside {
+.aside {
+    z-index: 999;
     display: none;
     position: absolute;
     right: -200px;
@@ -41,7 +37,7 @@ header {
     height: 100vh;
 }
 
-.test-aside-active {
+.aside-active {
     right: 0;
     display: flex;
     flex-direction: column;
@@ -49,7 +45,7 @@ header {
     padding-top: 50px;
 }
 
-.test-aside-active .navbar-item {
+.aside-active .navbar-item {
     width: 60%;
     margin-bottom: 20px;
 }
@@ -71,7 +67,7 @@ header {
 }
 
 @media screen and (width > 960px) {
-    .test-aside-active {
+    .aside-active {
         display: none;
     }
 }
