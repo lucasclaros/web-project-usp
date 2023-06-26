@@ -19,37 +19,42 @@ const Login = () => {
     password: "",
   });
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    if (Object.values(formValues).includes("")) {
-      alert("Preencha todos os campos");
-      return;
-    }
-  
-    if (formValues.email === "admin" && formValues.password === "admin") {
-      const user = { email: formValues.email, password: formValues.password };
-      localStorage.setItem("user", JSON.stringify(user));
-      setUser(user);
+  // Update the handleLogin function
+const handleLogin = (event) => {
+  event.preventDefault();
+  if (Object.values(formValues).includes("")) {
+    alert("Preencha todos os campos");
+    return;
+  }
+
+  if (formValues.email === "admin" && formValues.password === "admin") {
+    const user = { email: formValues.email, password: formValues.password };
+    localStorage.setItem("user", JSON.stringify(user));
+    setUser(user);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    navigate("/");
+  } else {
+    const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+    const localUser = JSON.parse(localStorage.getItem("user"));
+    const user = registeredUsers.find(
+      (user) =>
+        user.email === formValues.email && user.password === formValues.password
+    );
+
+    if (user || (localUser && formValues.email === localUser.email && formValues.password === localUser.password)) {
+      localStorage.setItem("user", JSON.stringify(user || localUser));
+      setUser(user || localUser);
       window.scrollTo({ top: 0, behavior: "smooth" });
       navigate("/");
     } else {
-      const user = usersData.find(
-        (user) =>
-          user.email === formValues.email && user.password === formValues.password
-      );
-  
-      if (user || (localUser && formValues.email === localUser.email && formValues.password === localUser.password)) {
-        if (user) {
-          localStorage.setItem("user", JSON.stringify(user));
-        }
-        setUser(user || localUser);
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        navigate("/");
-      } else {
-        alert("Usuário não cadastrado");
-      }
+      alert("Usuário não cadastrado");
     }
-  };
+  }
+};
+
+  
+  
+  
   
 
   return (

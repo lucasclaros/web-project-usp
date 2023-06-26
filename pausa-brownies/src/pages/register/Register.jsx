@@ -19,28 +19,35 @@ const Register = () => {
         confirmPassword: "",
     });
 
-    const handleSubmit = useCallback(
-        (event) => {
-            event.preventDefault();
-            if (Object.values(formValues).includes("")) {
-                alert("Preencha todos os campos");
-                return;
-            }
-
-            if (formValues.password !== formValues.confirmPassword) {
-                alert("As senhas não coincidem");
-                return;
-            }
-
-            localStorage.setItem("user", JSON.stringify(formValues));
-
-            alert("Cadastro realizado com sucesso!");
-            // scroll to top
-            window.scrollTo({ top: 0, behavior: "smooth" });
-            navigate("/login");
-        },
-        [formValues, navigate]
-    );
+// Update the handleSubmit function
+const handleSubmit = useCallback(
+    (event) => {
+      event.preventDefault();
+      if (Object.values(formValues).includes("")) {
+        alert("Preencha todos os campos");
+        return;
+      }
+  
+      if (formValues.password !== formValues.confirmPassword) {
+        alert("As senhas não coincidem");
+        return;
+      }
+  
+      const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+      registeredUsers.push(formValues);
+      localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
+  
+      // Update the key used to store the user data
+      localStorage.setItem("user", JSON.stringify(formValues));
+  
+      alert("Cadastro realizado com sucesso!");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      navigate("/login");
+    },
+    [formValues, navigate]
+  );
+  
+    
 
     return (
         <div className="register-wrapper">

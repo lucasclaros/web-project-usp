@@ -1,13 +1,17 @@
-import React, {useState} from "react";
+
+import React, { useContext, useState, useEffect } from "react";
 import "./css/ProfileAdmin.css";
 import InfoCard from "../components/InfoCards/InfoCard";
 import PausaTextField from "../components/TextField/PausaTextField";
 import PausaButton from "../components/Buttons/PausaButton/PausaButton";
 import ProductMainCard from "../components/ProductMainCard/ProductMainCard";
 import brownieData from "../../mock/brownieData.json"
-import usersData from "../../mock/usersData.json"
 import SearchBar from "../components/SearchBar/SearchBar";
 import { ReactComponent as ProfileIcon } from "./assets/profilea.svg";
+import UserContext from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
+
+
 
 
 
@@ -21,13 +25,26 @@ const ProfileAdmin = () => {
     const [selectedBrownie, setSelectedBrownie] = useState(null);
     const [selectedUser, setSelectedUser] = useState(null);
     
+    const navigate = useNavigate();
+    useEffect(() => {
+        const localUser = JSON.parse(localStorage.getItem("user"));
+        if (!localUser) {
+          navigate("/login");
+        }
+      
+        const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+        console.log(registeredUsers);
+        setFilteredUsers(registeredUsers);
+      }, []);
+      
+
 
     const handleSearch = (e) => {
         const query = e.target.value.toLowerCase();
         setSearchQuery(query);
     
         const results = brownieData.filter(
-        (item) => item.name.toLowerCase().includes(query) && query.length >= 2
+        (item) => item.name.toLowerCase().includes(query)
         );
         setSearchResults(results);
         setSelectedBrownie(null);
@@ -38,15 +55,14 @@ const ProfileAdmin = () => {
     const handleInputChange = (e) => {
         const inputValue = e.target.value;
         setQuery(inputValue);
-  
-
-        const filtered = usersData.filter((user) =>
-            user.name.toLowerCase().includes(inputValue.toLowerCase()) && inputValue.length >= 2
+      
+        const filtered = filteredUsers.filter((user) =>
+          user.name.toLowerCase().includes(inputValue.toLowerCase()) 
         );
         setFilteredUsers(filtered);
         setSelectedUser(null);
-
-    };
+      };
+      
 
     const handleBrownieClick = (brownie) => {
         setSelectedBrownie(brownie);
@@ -56,17 +72,35 @@ const ProfileAdmin = () => {
         setSelectedUser(user);
     };
 
+    const handleDelete = (user) => {
+        if (window.confirm("Are you sure you want to delete this user?")) {
+          const updatedUsers = filteredUsers.filter((item) => item.email !== user.email);
+          setFilteredUsers(updatedUsers);
+          setSelectedUser(null);
+          // Update the storage with the updated user list
+          localStorage.setItem("registeredUsers", JSON.stringify(updatedUsers));
+        }
+      };
+      
+      
+
     // button handler
-    const [disabled, setDisabled] = useState(false);
     const [value, setValue] = useState("");
   
     const handleChange = (e) => {
       setValue(e.target.value);
     };
 
-    const handleEditClick = () => {
-      setDisabled(!disabled);
-    };
+    const { user, setUser } = useContext(UserContext);
+    
+    const handleLogoff = (event) => {
+        event.preventDefault();
+        localStorage.removeItem("user");
+        setUser(null);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        navigate("/login");
+      };
+      
 
     const totalStock = brownieData.reduce((total, item) => total + item.stock, 0);
 
@@ -148,7 +182,6 @@ const ProfileAdmin = () => {
                                                 <PausaTextField
                                                     value={selectedUser.name}
                                                     label={"Nome"}
-                                                    disabled={"true"}
                                                     handleChange={handleChange}
                                                 />
                                             </div>
@@ -156,7 +189,6 @@ const ProfileAdmin = () => {
                                                 <PausaTextField
                                                     value={selectedUser.email}
                                                     label={"E-mail"}
-                                                    disabled={"true"}
                                                     handleChange={handleChange}
                                                 />
                                             </div>
@@ -164,20 +196,14 @@ const ProfileAdmin = () => {
                                                 <PausaTextField
                                                     value={selectedUser.phone}
                                                     label={"Telefone"}
-                                                    disabled={"true"}
                                                     handleChange={handleChange}
                                                 />
                                             </div>
                                             <div className="user-management-buttons centered-content">
-                                                <div className="user-management-button edit">
-                                                    <PausaButton
-                                                        buttonText={"Editar"}
-                                                        onclick={handleEditClick}
-                                                    />
-                                                </div>
                                                 <div className="user-management-button delete">
                                                     <PausaButton
                                                         buttonText={"Excluir"}
+                                                        onClick={() => handleDelete(selectedUser)}
                                                     />
                                                 </div>
 
@@ -254,6 +280,13 @@ const ProfileAdmin = () => {
 
                         </div>
                     }
+                />
+            </div>
+
+            <div className="logoff-admin">
+                <PausaButton
+                    buttonText={"Logoff"}
+                    onClick={handleLogoff}
                 />
             </div>
 
