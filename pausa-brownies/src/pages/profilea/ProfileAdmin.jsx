@@ -1,5 +1,5 @@
 
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useCallback } from "react";
 import "./css/ProfileAdmin.css";
 import InfoCard from "../components/InfoCards/InfoCard";
 import PausaTextField from "../components/TextField/PausaTextField";
@@ -36,8 +36,36 @@ const ProfileAdmin = () => {
         console.log(registeredUsers);
         setFilteredUsers(registeredUsers);
       }, []);
-      
 
+    const handleEditUser = useCallback(
+        (event) => {
+          event.preventDefault();
+          if (Object.values(selectedUser).includes("")) {
+            alert("Preencha todos os campos");
+            return;
+          }
+      
+          const updatedUsers = filteredUsers.map((user) => {
+            if (user.email === selectedUser.email) {
+              return {
+                ...user,
+                name: selectedUser.name,
+                email: selectedUser.email,
+                phone: selectedUser.phone,
+              };
+            }
+            return user;
+          });
+      
+          setFilteredUsers(updatedUsers);
+          setSelectedUser(null);
+      
+          localStorage.setItem("registeredUsers", JSON.stringify(updatedUsers));
+      
+          alert("Usuário atualizado com sucesso!");
+        },
+        [filteredUsers, selectedUser]
+    );
 
     const handleSearch = (e) => {
         const query = e.target.value.toLowerCase();
@@ -82,14 +110,22 @@ const ProfileAdmin = () => {
         }
       };
       
-      
-
-    // button handler
+    
     const [value, setValue] = useState("");
   
     const handleChange = (e) => {
-      setValue(e.target.value);
-    };
+        const { name, value } = e.target;
+      
+        const updatedUsers = filteredUsers.map((user) => {
+          if (user.email === selectedUser.email) {
+            return { ...user, [name]: value };
+          }
+          return user;
+        });
+      
+        setFilteredUsers(updatedUsers);
+      };
+      
 
     const { user, setUser } = useContext(UserContext);
     
@@ -103,6 +139,7 @@ const ProfileAdmin = () => {
       
 
     const totalStock = brownieData.reduce((total, item) => total + item.stock, 0);
+
 
     return (
         <div className="profile-admin-wrapper">
@@ -141,7 +178,7 @@ const ProfileAdmin = () => {
                     }
                 />
             </div>
-            <div className="profile-search-wrapper">
+            <div className="profile-search-wrapper centered-content">
                 <SearchBar
                     searchQuery={query}
                     handleSearch={handleInputChange}
@@ -179,24 +216,24 @@ const ProfileAdmin = () => {
                                         </div>
                                         <div className="user-management-info centered-content">
                                             <div className="user-info-edit centered-content">
-                                                <PausaTextField
-                                                    value={selectedUser.name}
-                                                    label={"Nome"}
-                                                    handleChange={handleChange}
+                                            <PausaTextField
+                                                label={"Nome: " + selectedUser.name}
+                                                handleChange={handleChange}
+                                                name="name"
+                                            />
+                                            </div>
+                                            <div className="user-info-edit centered-content">
+                                            <PausaTextField
+                                                label={"E-mail: " + selectedUser.email}
+                                                handleChange={handleChange}
+                                                name="email"
                                                 />
                                             </div>
                                             <div className="user-info-edit centered-content">
-                                                <PausaTextField
-                                                    value={selectedUser.email}
-                                                    label={"E-mail"}
-                                                    handleChange={handleChange}
-                                                />
-                                            </div>
-                                            <div className="user-info-edit centered-content">
-                                                <PausaTextField
-                                                    value={selectedUser.phone}
-                                                    label={"Telefone"}
-                                                    handleChange={handleChange}
+                                            <PausaTextField
+                                                label={"Telefone: " + selectedUser.phone}
+                                                handleChange={handleChange}
+                                                name="phone"
                                                 />
                                             </div>
                                             <div className="user-management-buttons centered-content">
@@ -204,6 +241,12 @@ const ProfileAdmin = () => {
                                                     <PausaButton
                                                         buttonText={"Excluir"}
                                                         onClick={() => handleDelete(selectedUser)}
+                                                    />
+                                                </div>
+                                                <div className="user-management-button save">
+                                                <PausaButton
+                                                    buttonText={"Salvar"}
+                                                    onClick={handleEditUser}
                                                     />
                                                 </div>
 
@@ -228,37 +271,38 @@ const ProfileAdmin = () => {
                 />
             </div>
             <div className="product-show-wrapper">
-                {searchResults.length > 0 && !selectedBrownie && (
-                <div className="products-results-wrapper centered-content">
+                {searchQuery === '' && !selectedBrownie && (
+                    <div className="products-results-wrapper centered-content">
                     <div className="search-title shaded-text">
                         Resultados da busca (clique no produto para gerenciar):
                     </div>
-                     <ul>
-                        {searchResults.map((item) => (
-                            <li className="search-result" key={item.id} onClick={() => handleBrownieClick(item)}>
-                                {item.name}
-                            </li>
+                    <ul>
+                        {brownieData.map((item) => (
+                        <li className="search-result" key={item.id} onClick={() => handleBrownieClick(item)}>
+                            {item.name}
+                        </li>
                         ))}
                     </ul>
-                </div>
-            )}
-
-            {selectedBrownie && (
-                    <div className="selected-produt-wrapper">
-                        <ProductMainCard
-                            name={selectedBrownie.name}
-                            price={selectedBrownie.price}
-                            keywords={selectedBrownie.keywords.join(", ")}
-                            button1={"Adicionar ao carrinho"}
-                            button2={"Ver Detalhes"}
-                        />
                     </div>
                 )}
 
-            {searchResults.length === 0 && !selectedBrownie && (
-                <p></p>
-            )}
-            </div>
+                {selectedBrownie && (
+                    <div className="selected-produt-wrapper">
+                    <ProductMainCard
+                        name={selectedBrownie.name}
+                        price={selectedBrownie.price}
+                        keywords={selectedBrownie.keywords.join(", ")}
+                        button={"Editar Brownie"}
+                        to={`/description/${selectedBrownie.id}`}
+                    />
+                    </div>
+                )}
+
+                {searchQuery !== '' && searchResults.length === 0 && !selectedBrownie && (
+                    <p></p>
+                )}
+                </div>
+
 
             <div className="report-wrapper">
                 <InfoCard
@@ -283,7 +327,7 @@ const ProfileAdmin = () => {
                 />
             </div>
 
-            <div className="logoff-admin">
+            <div className="logoff-admin centered-content">
                 <PausaButton
                     buttonText={"Logoff"}
                     onClick={handleLogoff}

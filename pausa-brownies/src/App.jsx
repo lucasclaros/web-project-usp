@@ -11,7 +11,7 @@ import ProfileUser from "./pages/profileu/ProfileUser";
 import ProfileAdmin from "./pages/profilea/ProfileAdmin";
 import UserContext from "./context/UserContext";
 import Description from "./pages/description/Description";
-import Management from "./pages/management/Management";
+import Edit from "./pages/edit/Edit";
 import CartItem from "./pages/components/CartItem/CartItem";
 import Cart from "./pages/cart/Cart";
 import { useState } from "react";
@@ -39,7 +39,11 @@ function App() {
                     element={<Description />}
                     exact
                 />
-                <Route path="/management" element={<Management />} exact />
+                <Route
+                    path="/edit/:id"
+                    element={<Edit />}
+                    exact
+                />
                 <Route path="/cartitem" element={<CartItem />} exact />
                 <Route path="/cart" element={<Cart />} exact />
             </Routes>

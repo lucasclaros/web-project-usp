@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useParams} from "react";
 import "./Edit.css";
 import InfoCard from "../components/InfoCards/InfoCard";
 import { ReactComponent as RealBrownie } from "../profilea/assets/RealBrownie.svg";
+import brownieData from "../../mock/brownieData.json";
 import PausaButton from "../components/Buttons/PausaButton/PausaButton";
 import PausaTextField from "../components/TextField/PausaTextField"
 
 const Edit = () => {
+    const { id } = useParams();
+
+    const item = brownieData.find((brownie) => brownie.id.toString() === id);
+    
     return (
         <div className="edit-wrapper">
             <InfoCard
@@ -18,13 +23,12 @@ const Edit = () => {
                             </div>
                             <div className="product-edit-info-wrapper">
                                 <InfoCard
-                                    header={"Descrição"}
+                                    header={item.name}
                                     body={
                                         <div className="product-edit-info">
                                             <div className="edit-name centered-content">
                                                 <PausaTextField
                                                     name={"name"}
-                                                    value={"Produto X"}
                                                     label={"Nome do Produto:"}
                                                     placeholder={"Nome do Produto"}
                                                     inputType={"text"}
@@ -35,7 +39,6 @@ const Edit = () => {
                                             <div className="edit-price centered-content">
                                                 <PausaTextField
                                                     name={"price"}
-                                                    value={"R$ 10,00"}
                                                     label={"Preço:"}
                                                     placeholder={"Preço"}
                                                     inputType={"text"}
@@ -46,7 +49,6 @@ const Edit = () => {
                                             <div className="edit-ingredients centered-content">
                                                 <PausaTextField
                                                     name={"ingredients"}
-                                                    value={"Ingredientes"}
                                                     label={"Ingredientes:"}
                                                     placeholder={"Ingredientes"}
                                                     inputType={"text"}
@@ -57,7 +59,6 @@ const Edit = () => {
                                             <div className="edit-stock centered-content">
                                                 <PausaTextField
                                                     name={"stock"}
-                                                    value={11}
                                                     label={"Estoque:"}
                                                     placeholder={"Estoque"}
                                                     inputType={"number"}
@@ -67,8 +68,7 @@ const Edit = () => {
                                             </div>
                                             <div className="edit-friends centered-content">
                                                 <PausaTextField
-                                                    name={"friends"}
-                                                    value={"Refrigerante, Café"}
+                                                    name={"friends"} 
                                                     label={"Vai bem com:"}
                                                     placeholder={"Refrigerante, Café"}
                                                     inputType={"text"}
