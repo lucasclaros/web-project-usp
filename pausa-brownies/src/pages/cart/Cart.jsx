@@ -5,6 +5,7 @@ import InfoCard from "../components/InfoCards/InfoCard";
 import UserContext from "../../context/UserContext";
 import PausaButton from "../components/Buttons/PausaButton/PausaButton";
 import { ReactComponent as EmptyCart } from "./assets/empty-cart.svg";
+import CartButton from "../components/Buttons/CartButton/CartButton";
 
 const Cart = () => {
   const { cart, setCart } = useContext(UserContext);
@@ -54,6 +55,7 @@ const Cart = () => {
           }
         />
       </div>
+      <CartButton cartItemCount={cart.length} />
     </div>
   );
 };

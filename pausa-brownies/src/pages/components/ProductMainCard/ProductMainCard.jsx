@@ -7,14 +7,14 @@ import { useMediaQuery } from "@uidotdev/usehooks";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-const ProductMainCard = ({ button, name, price, keywords, to, onClick }) => {
+const ProductMainCard = ({ button, name, price, keywords, to,  toInfo, onClick }) => {
     const isMobile = useMediaQuery("(max-width: 960px)");
     return (
         <InfoCard
             header={
                 <div className="centered-content" style={{ width: "100%" }}>
                     <div style={{ flex: "1" }}>{name}</div>
-                    <Link to={to} className="centered-content">
+                    <Link to={toInfo} className="centered-content">
                         <AiOutlineInfoCircle color="black" />
                     </Link>
                 </div>
@@ -36,6 +36,7 @@ const ProductMainCard = ({ button, name, price, keywords, to, onClick }) => {
                             price={price}
                             keywords={keywords}
                             onClick={onClick}
+                            to={to}
                         />
                     </div>
                 </div>

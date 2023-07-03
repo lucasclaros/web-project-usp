@@ -293,7 +293,9 @@ const ProfileAdmin = () => {
                         price={selectedBrownie.price}
                         keywords={selectedBrownie.keywords.join(", ")}
                         button={"Editar Brownie"}
-                        to={`/description/${selectedBrownie.id}`}
+                        toInfo={`/description/${selectedBrownie.id}`}
+                        to={`/edit/${selectedBrownie.id}`}
+
                     />
                     </div>
                 )}

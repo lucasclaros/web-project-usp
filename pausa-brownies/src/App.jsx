@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
 import About from "./pages/about/About";
 import Navbar from "./pages/components/Navbar/Navbar";
+import CartButton from "./pages/components/Buttons/CartButton/CartButton";
 import Contact from "./pages/contact/Contact";
 import Menu from "./pages/menu/Menu";
 import Login from "./pages/login/Login";
@@ -47,6 +48,7 @@ function App() {
                 <Route path="/cartitem" element={<CartItem />} exact />
                 <Route path="/cart" element={<Cart />} exact />
             </Routes>
+            <CartButton />
             {/* Navbar compensation */}
             <div style={{ height: isMobile ? "150px" : "80px" }}></div>
             <Footer />
