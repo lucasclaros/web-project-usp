@@ -5,7 +5,6 @@ import InfoCard from "../components/InfoCards/InfoCard";
 import PausaTextField from "../components/TextField/PausaTextField";
 import PausaButton from "../components/Buttons/PausaButton/PausaButton";
 import ProductMainCard from "../components/ProductMainCard/ProductMainCard";
-import brownieData from "../../mock/brownieData.json"
 import SearchBar from "../components/SearchBar/SearchBar";
 import { ReactComponent as ProfileIcon } from "./assets/profilea.svg";
 import UserContext from "../../context/UserContext";
@@ -24,16 +23,32 @@ const ProfileAdmin = () => {
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [selectedBrownie, setSelectedBrownie] = useState(null);
     const [selectedUser, setSelectedUser] = useState(null);
+    const [registeredUsers, setRegisteredUsers] = useState([]);
+    const [brownieData, setBrownieData] = useState([]);
+
     
     const navigate = useNavigate();
     useEffect(() => {
+        const jsonBrownieData = require("../../mock/brownieData.json");
+
+        const storedBrownieData = JSON.parse(localStorage.getItem("brownieData")) || [];
+      
+        const mergedBrownieData = jsonBrownieData.map((jsonBrownie) => {
+          const storedBrownie = storedBrownieData.find((stored) => stored.id === jsonBrownie.id);
+          return storedBrownie ? { ...jsonBrownie, ...storedBrownie } : jsonBrownie;
+        });
+      
+        setBrownieData(mergedBrownieData);
+      }, []);
+
+      useEffect(() => {
         const localUser = JSON.parse(localStorage.getItem("user"));
         if (!localUser) {
           navigate("/login");
         }
       
         const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
-        console.log(registeredUsers);
+        setRegisteredUsers(registeredUsers);
         setFilteredUsers(registeredUsers);
       }, []);
 
@@ -83,9 +98,9 @@ const ProfileAdmin = () => {
     const handleInputChange = (e) => {
         const inputValue = e.target.value;
         setQuery(inputValue);
-      
-        const filtered = filteredUsers.filter((user) =>
-          user.name.toLowerCase().includes(inputValue.toLowerCase()) 
+    
+        const filtered = registeredUsers.filter((user) =>
+          user.name.toLowerCase().includes(inputValue.toLowerCase())
         );
         setFilteredUsers(filtered);
         setSelectedUser(null);
@@ -105,7 +120,6 @@ const ProfileAdmin = () => {
           const updatedUsers = filteredUsers.filter((item) => item.email !== user.email);
           setFilteredUsers(updatedUsers);
           setSelectedUser(null);
-          // Update the storage with the updated user list
           localStorage.setItem("registeredUsers", JSON.stringify(updatedUsers));
         }
       };

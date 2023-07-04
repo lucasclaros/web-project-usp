@@ -59,10 +59,12 @@ const Edit = () => {
     alert("Brownie data saved successfully!");
   };
 
+  const headerName = item && !name ? item.name : name; 
+  
   return (
     <div className="edit-wrapper">
       <InfoCard
-        header={item.name}
+        header={headerName}
         body={
           <div className="product-edit-wrapper centered-content">
             <div className="product-edit-content centered-content">
