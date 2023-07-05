@@ -17,7 +17,7 @@ const Cart = () => {
     if (storedCart) {
       setCart(storedCart);
     }
-  }, []);
+  }, [setCart]);
 
   const handleCheckout = (event) => {
     event.preventDefault();
@@ -29,6 +29,11 @@ const Cart = () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
       navigate("/login");
     }
+  };
+
+  const handleClearCart = () => {
+    localStorage.removeItem("cart");
+    setCart([]);
   };
 
   return (
@@ -59,10 +64,7 @@ const Cart = () => {
                     <PausaButton
                       label={"Limpar carrinho"}
                       buttonText={"Limpar carrinho"}
-                      onClick={() => {
-                        localStorage.removeItem("cart");
-                        setCart([]);
-                      }}
+                      onClick={handleClearCart}
                     />
                   </div>
                 </>

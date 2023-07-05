@@ -1,4 +1,4 @@
-.payment-money-text, .payment-money-total{
+.payment-done-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,19 +10,4 @@
     margin: 5vh 5vw;
     padding: 2vh 5vw;
     text-align: justify;
-}
-
-.payment-money-content {
-    display: flex;
-    flex-direction: column;
-
-}
-
-
-.payment-money-button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 5vh 0;
 }

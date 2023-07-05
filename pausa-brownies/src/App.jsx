@@ -19,6 +19,7 @@ import Payment from "./pages/payment/Payment";
 import PaymentPix from "./pages/payment-options/PaymentPix";
 import PaymentCard from "./pages/payment-options/PaymentCard";
 import PaymentMoney from "./pages/payment-options/PaymentMoney";
+import PaymentDone from "./pages/payment-options/PaymentDone";
 import { useState } from "react";
 import { useMediaQuery } from "@uidotdev/usehooks";
 
@@ -55,6 +56,7 @@ function App() {
                 <Route path="/payment/pix" element={<PaymentPix />} exact />
                 <Route path="/payment/card" element={<PaymentCard />} exact />
                 <Route path="/payment/money" element={<PaymentMoney />} exact />
+                <Route path="/payment/confirmation" element={<PaymentDone />} exact />
                 
             </Routes>
             <CartButton />
