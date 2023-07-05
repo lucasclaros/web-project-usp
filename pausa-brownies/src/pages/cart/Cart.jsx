@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Cart.css";
 import CartItem from "../components/CartItem/CartItem";
 import InfoCard from "../components/InfoCards/InfoCard";
@@ -8,7 +9,8 @@ import { ReactComponent as EmptyCart } from "./assets/empty-cart.svg";
 import CartButton from "../components/Buttons/CartButton/CartButton";
 
 const Cart = () => {
-  const { cart, setCart } = useContext(UserContext);
+  const { cart, setCart, user } = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart"));
@@ -16,6 +18,18 @@ const Cart = () => {
       setCart(storedCart);
     }
   }, []);
+
+  const handleCheckout = (event) => {
+    event.preventDefault();
+    if (user) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      navigate("/payment");
+    } else {
+      alert("Você precisa estar logado para finalizar o pedido.");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      navigate("/login");
+    }
+  };
 
   return (
     <div className="cart-wrapper">
@@ -34,6 +48,13 @@ const Cart = () => {
                       quantity={item.quantity}
                     />
                   ))}
+                  <div className="cart-button-checkout">
+                    <PausaButton
+                      label={"Finalizar pedido"}
+                      buttonText={"Finalizar pedido"}
+                      onClick={handleCheckout}
+                    />
+                  </div>
                   <div className="cart-button-clear">
                     <PausaButton
                       label={"Limpar carrinho"}
@@ -49,6 +70,11 @@ const Cart = () => {
                 <div className="empty-cart">
                   <EmptyCart />
                   <p className="shaded-text">Seu carrinho está vazio.</p>
+                  <PausaButton
+                    label={"Voltar para o cardápio"}
+                    buttonText={"Voltar para o cardápio"}
+                    to={"/menu/"}
+                  />
                 </div>
               )}
             </>

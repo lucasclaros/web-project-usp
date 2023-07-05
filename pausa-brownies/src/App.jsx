@@ -15,6 +15,10 @@ import Description from "./pages/description/Description";
 import Edit from "./pages/edit/Edit";
 import CartItem from "./pages/components/CartItem/CartItem";
 import Cart from "./pages/cart/Cart";
+import Payment from "./pages/payment/Payment";
+import PaymentPix from "./pages/payment-options/PaymentPix";
+import PaymentCard from "./pages/payment-options/PaymentCard";
+import PaymentMoney from "./pages/payment-options/PaymentMoney";
 import { useState } from "react";
 import { useMediaQuery } from "@uidotdev/usehooks";
 
@@ -47,6 +51,11 @@ function App() {
                 />
                 <Route path="/cartitem" element={<CartItem />} exact />
                 <Route path="/cart" element={<Cart />} exact />
+                <Route path="/payment" element={<Payment />} exact />
+                <Route path="/payment/pix" element={<PaymentPix />} exact />
+                <Route path="/payment/card" element={<PaymentCard />} exact />
+                <Route path="/payment/money" element={<PaymentMoney />} exact />
+                
             </Routes>
             <CartButton />
             {/* Navbar compensation */}
