@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import axios from 'axios';
 import React, { useContext } from "react";
 import "./css/Login.css";
 import InfoCard from "../components/InfoCards/InfoCard";
@@ -19,35 +20,27 @@ const Login = () => {
     password: "",
   });
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
     if (Object.values(formValues).includes("")) {
       alert("Preencha todos os campos");
       return;
     }
   
-    if (formValues.email === "admin" && formValues.password === "admin") {
-      const user = { email: formValues.email, password: formValues.password };
-      localStorage.setItem("user", JSON.stringify(user));
-      setUser(user);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      navigate("/");
-    } else {
-      const user = usersData.find(
-        (user) =>
-          user.email === formValues.email && user.password === formValues.password
-      );
-  
-      if (user || (localUser && formValues.email === localUser.email && formValues.password === localUser.password)) {
-        if (user) {
-          localStorage.setItem("user", JSON.stringify(user));
-        }
-        setUser(user || localUser);
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        navigate("/");
+    try {
+      const response = await axios.post('/login', formValues);
+      const { message, user } = response.data;
+      if (message === 'Login successful') {
+        localStorage.setItem('user', JSON.stringify(user));
+        setUser(user);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        navigate('/');
       } else {
-        alert("Usuário não cadastrado");
+        alert('Credenciais inválidas');
       }
+    } catch (error) {
+      console.log(error);
+      alert('Ocorreu um erro ao fazer o login');
     }
   };
   
