@@ -9,6 +9,7 @@ const Menu = () => {
   const { cart, setCart } = useContext(UserContext);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [productQuantities, setProductQuantities] = useState({});
 
   const handleSearch = (e) => {
     const query = e.target.value.toLowerCase();
@@ -70,6 +71,13 @@ const Menu = () => {
     }
   };
 
+  const handleQuantityChange = (productId, newQuantity) => {
+    setProductQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [productId]: newQuantity,
+    }));
+  };
+
   return (
     <div className="menu-wrapper">
       <div className="menu-search-bar">
@@ -89,7 +97,11 @@ const Menu = () => {
                 keywords={item.keywords.join(", ")}
                 button={"Adicionar ao carrinho"}
                 toInfo={`/description/${item.id}`}
-                onClick={() => addToCart(item, 1)}
+                onClick={() => addToCart(item, productQuantities[item.id] || 1)}
+                quantity={productQuantities[item.id] || 0}
+                onQuantityChange={(newQuantity) =>
+                  handleQuantityChange(item.id, newQuantity)
+                }
               />
             </div>
           ))}
@@ -104,7 +116,11 @@ const Menu = () => {
                 keywords={item.keywords.join(", ")}
                 button={"Adicionar ao carrinho"}
                 toInfo={`/description/${item.id}`}
-                onClick={() => addToCart(item, 1)}
+                onClick={() => addToCart(item, productQuantities[item.id] || 1)}
+                quantity={productQuantities[item.id] || 0}
+                onQuantityChange={(newQuantity) =>
+                  handleQuantityChange(item.id, newQuantity)
+                }
               />
             </div>
           ))}

@@ -1,7 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import "./css/PaymentDone.css";
+import UserContext from "../../context/UserContext";
 
 const PaymentDone = () => {
+  const { setCart } = useContext(UserContext);
+
+  useEffect(() => {
+    localStorage.removeItem("cart");
+    setCart([]);
+  }, [setCart]);
 
   return (
     <div className="payment-done-wrapper">

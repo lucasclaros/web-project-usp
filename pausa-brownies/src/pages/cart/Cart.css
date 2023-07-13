@@ -44,3 +44,20 @@
     max-height: 300px;
     margin: 0 auto;
 }
+
+.cart-total-value {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px 16px 16px 16px;
+    border: 1px black solid;
+    background-color: white;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    width: calc(clamp(150px, 45vw, 600px) + 2vw);
+    margin: auto;
+    padding: 2vh 5vw;
+    text-align: justify; 
+    gap: 2vh;
+}
+

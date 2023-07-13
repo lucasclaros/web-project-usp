@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Cart.css";
 import CartItem from "../components/CartItem/CartItem";
@@ -11,6 +11,8 @@ import CartButton from "../components/Buttons/CartButton/CartButton";
 const Cart = () => {
   const { cart, setCart, user } = useContext(UserContext);
   const navigate = useNavigate();
+  const [totalValue, setTotalValue] = useState(0);
+  const [totalQuantity, setTotalQuantity] = useState(0);
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart"));
@@ -18,6 +20,19 @@ const Cart = () => {
       setCart(storedCart);
     }
   }, [setCart]);
+
+  useEffect(() => {
+    let value = 0;
+    let quantity = 0;
+    cart.forEach((item) => {
+      const price = item.item.price;
+      const itemQuantity = item.quantity;
+      value += price * itemQuantity;
+      quantity += itemQuantity;
+    });
+    setTotalValue(value);
+    setTotalQuantity(quantity);
+  }, [cart]);
 
   const handleCheckout = (event) => {
     event.preventDefault();
@@ -42,7 +57,7 @@ const Cart = () => {
         <InfoCard
           header={"Carrinho"}
           body={
-            <>
+            <div className="cart-card">
               {cart.length > 0 ? (
                 <>
                   {cart.map((item, index) => (
@@ -53,6 +68,12 @@ const Cart = () => {
                       quantity={item.quantity}
                     />
                   ))}
+                  
+                  <div className="cart-total-value">
+                    <p>Valor Total do Carrinho: R${totalValue.toFixed(2)}</p>
+                    <p>Quantidade Total de Itens: {totalQuantity}</p>
+                  </div>  
+                  
                   <div className="cart-button-checkout">
                     <PausaButton
                       label={"Finalizar pedido"}
@@ -79,7 +100,7 @@ const Cart = () => {
                   />
                 </div>
               )}
-            </>
+            </div>
           }
         />
       </div>
