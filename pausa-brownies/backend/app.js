@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const db = require('./db');
 
+
+
 // Importar as rotas
 const usersRouter = require('./routes/users');
 
