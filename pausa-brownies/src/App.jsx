@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
 import About from "./pages/about/About";
 import Navbar from "./pages/components/Navbar/Navbar";
+import CartButton from "./pages/components/Buttons/CartButton/CartButton";
 import Contact from "./pages/contact/Contact";
 import Menu from "./pages/menu/Menu";
 import Login from "./pages/login/Login";
@@ -11,9 +12,14 @@ import ProfileUser from "./pages/profileu/ProfileUser";
 import ProfileAdmin from "./pages/profilea/ProfileAdmin";
 import UserContext from "./context/UserContext";
 import Description from "./pages/description/Description";
-import Management from "./pages/management/Management";
+import Edit from "./pages/edit/Edit";
 import CartItem from "./pages/components/CartItem/CartItem";
 import Cart from "./pages/cart/Cart";
+import Payment from "./pages/payment/Payment";
+import PaymentPix from "./pages/payment-options/PaymentPix";
+import PaymentCard from "./pages/payment-options/PaymentCard";
+import PaymentMoney from "./pages/payment-options/PaymentMoney";
+import PaymentDone from "./pages/payment-options/PaymentDone";
 import { useState } from "react";
 import { useMediaQuery } from "@uidotdev/usehooks";
 
@@ -39,10 +45,21 @@ function App() {
                     element={<Description />}
                     exact
                 />
-                <Route path="/management" element={<Management />} exact />
+                <Route
+                    path="/edit/:id"
+                    element={<Edit />}
+                    exact
+                />
                 <Route path="/cartitem" element={<CartItem />} exact />
                 <Route path="/cart" element={<Cart />} exact />
+                <Route path="/payment" element={<Payment />} exact />
+                <Route path="/payment/pix" element={<PaymentPix />} exact />
+                <Route path="/payment/card" element={<PaymentCard />} exact />
+                <Route path="/payment/money" element={<PaymentMoney />} exact />
+                <Route path="/payment/confirmation" element={<PaymentDone />} exact />
+                
             </Routes>
+            <CartButton />
             {/* Navbar compensation */}
             <div style={{ height: isMobile ? "150px" : "80px" }}></div>
             <Footer />

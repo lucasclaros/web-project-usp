@@ -76,9 +76,10 @@
 
 .product-comments {
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border-radius: 16px;
-    margin-top: 20px;
-    width: 100%;
+    margin-top: 20px 5vw;
     height: max(180px, 30vh);
     padding: 0;
 }

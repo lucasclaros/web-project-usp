@@ -67,7 +67,7 @@ const Navbar = () => {
                                 }}
                             >
                                 <ProfileIcon />
-                                {user ? (user.email === "admin" ? "Admin" : "Perfil") : "/login"}
+                                {user ? (user.email === "admin" ? "Admin" : "Perfil") : "Login"}
                             </div>
                         }
                     />

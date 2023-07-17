@@ -33,16 +33,26 @@ const Login = () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
       navigate("/");
     } else {
-      const user = usersData.find(
+      const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+      const localUser = JSON.parse(localStorage.getItem("user"));
+  
+      const user = registeredUsers.find(
         (user) =>
-          user.email === formValues.email && user.password === formValues.password
+          user.email === formValues.email && user.password === String(formValues.password)
+      ) || usersData.find(
+        (user) =>
+          user.email === formValues.email && user.password === String(formValues.password)
       );
   
-      if (user || (localUser && formValues.email === localUser.email && formValues.password === localUser.password)) {
-        if (user) {
-          localStorage.setItem("user", JSON.stringify(user));
+      if (user) {
+        localStorage.setItem("user", JSON.stringify(user));
+  
+        if (!registeredUsers.find((u) => u.email === user.email)) {
+          registeredUsers.push(user);
+          localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
         }
-        setUser(user || localUser);
+  
+        setUser(user);
         window.scrollTo({ top: 0, behavior: "smooth" });
         navigate("/");
       } else {
@@ -51,6 +61,8 @@ const Login = () => {
     }
   };
   
+
+
 
   return (
     <div className="login-wrapper">

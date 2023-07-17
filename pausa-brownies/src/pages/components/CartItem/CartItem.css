@@ -4,11 +4,12 @@
     width: calc(clamp(150px, 45vw, 600px) + 2vw);
     height: auto;
     justify-content: center;
-    margin: 2vw;
+    margin: 5vh auto;
     border-radius: 16px;
-
+    transition: background-color 0.3s ease;
 
 }
+
 
 .cart-item-image svg {
     flex-shrink: 1;
@@ -26,3 +27,36 @@
     gap: 1vw;
     font-size: clamp(12px, 2rem, 24px);
 }
+
+.cart-item-remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2vw;
+  }
+  
+  .cart-item-remove-button {
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    background-color: #ff5252;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid black;
+    transition: background-color 0.3s ease;
+    transition: width 0.1s ease;
+    transition: height 0.1s ease;
+  }
+  
+  .cart-item-remove-button:hover{
+    background-color: #ff1744;
+    width: 3.5vw;
+    height: 3.5vw;
+  }
+  
+
+  .cart-item.hovered {
+    background-color: lightcoral;
+  }
+  

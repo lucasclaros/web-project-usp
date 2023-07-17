@@ -1,13 +1,16 @@
-import React, {useState} from "react";
+
+import React, { useContext, useState, useEffect, useCallback } from "react";
 import "./css/ProfileAdmin.css";
 import InfoCard from "../components/InfoCards/InfoCard";
 import PausaTextField from "../components/TextField/PausaTextField";
 import PausaButton from "../components/Buttons/PausaButton/PausaButton";
 import ProductMainCard from "../components/ProductMainCard/ProductMainCard";
-import brownieData from "../../mock/brownieData.json"
-import usersData from "../../mock/usersData.json"
 import SearchBar from "../components/SearchBar/SearchBar";
 import { ReactComponent as ProfileIcon } from "./assets/profilea.svg";
+import UserContext from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
+
+
 
 
 
@@ -20,14 +23,71 @@ const ProfileAdmin = () => {
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [selectedBrownie, setSelectedBrownie] = useState(null);
     const [selectedUser, setSelectedUser] = useState(null);
+    const [registeredUsers, setRegisteredUsers] = useState([]);
+    const [brownieData, setBrownieData] = useState([]);
+
     
+    const navigate = useNavigate();
+    useEffect(() => {
+        const jsonBrownieData = require("../../mock/brownieData.json");
+
+        const storedBrownieData = JSON.parse(localStorage.getItem("brownieData")) || [];
+      
+        const mergedBrownieData = jsonBrownieData.map((jsonBrownie) => {
+          const storedBrownie = storedBrownieData.find((stored) => stored.id === jsonBrownie.id);
+          return storedBrownie ? { ...jsonBrownie, ...storedBrownie } : jsonBrownie;
+        });
+      
+        setBrownieData(mergedBrownieData);
+      }, []);
+
+      useEffect(() => {
+        const localUser = JSON.parse(localStorage.getItem("user"));
+        if (!localUser) {
+          navigate("/login");
+        }
+      
+        const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+        setRegisteredUsers(registeredUsers);
+        setFilteredUsers(registeredUsers);
+      }, []);
+
+    const handleEditUser = useCallback(
+        (event) => {
+          event.preventDefault();
+          if (Object.values(selectedUser).includes("")) {
+            alert("Preencha todos os campos");
+            return;
+          }
+      
+          const updatedUsers = filteredUsers.map((user) => {
+            if (user.email === selectedUser.email) {
+              return {
+                ...user,
+                name: selectedUser.name,
+                email: selectedUser.email,
+                phone: selectedUser.phone,
+              };
+            }
+            return user;
+          });
+      
+          setFilteredUsers(updatedUsers);
+          setSelectedUser(null);
+      
+          localStorage.setItem("registeredUsers", JSON.stringify(updatedUsers));
+      
+          alert("Usuário atualizado com sucesso!");
+        },
+        [filteredUsers, selectedUser]
+    );
 
     const handleSearch = (e) => {
         const query = e.target.value.toLowerCase();
         setSearchQuery(query);
     
         const results = brownieData.filter(
-        (item) => item.name.toLowerCase().includes(query) && query.length >= 2
+        (item) => item.name.toLowerCase().includes(query)
         );
         setSearchResults(results);
         setSelectedBrownie(null);
@@ -38,15 +98,14 @@ const ProfileAdmin = () => {
     const handleInputChange = (e) => {
         const inputValue = e.target.value;
         setQuery(inputValue);
-  
-
-        const filtered = usersData.filter((user) =>
-            user.name.toLowerCase().includes(inputValue.toLowerCase()) && inputValue.length >= 2
+    
+        const filtered = registeredUsers.filter((user) =>
+          user.name.toLowerCase().includes(inputValue.toLowerCase())
         );
         setFilteredUsers(filtered);
         setSelectedUser(null);
-
-    };
+      };
+      
 
     const handleBrownieClick = (brownie) => {
         setSelectedBrownie(brownie);
@@ -56,19 +115,45 @@ const ProfileAdmin = () => {
         setSelectedUser(user);
     };
 
-    // button handler
-    const [disabled, setDisabled] = useState(false);
+    const handleDelete = (user) => {
+        if (window.confirm("Are you sure you want to delete this user?")) {
+          const updatedUsers = filteredUsers.filter((item) => item.email !== user.email);
+          setFilteredUsers(updatedUsers);
+          setSelectedUser(null);
+          localStorage.setItem("registeredUsers", JSON.stringify(updatedUsers));
+        }
+      };
+      
+    
     const [value, setValue] = useState("");
   
     const handleChange = (e) => {
-      setValue(e.target.value);
-    };
+        const { name, value } = e.target;
+      
+        const updatedUsers = filteredUsers.map((user) => {
+          if (user.email === selectedUser.email) {
+            return { ...user, [name]: value };
+          }
+          return user;
+        });
+      
+        setFilteredUsers(updatedUsers);
+      };
+      
 
-    const handleEditClick = () => {
-      setDisabled(!disabled);
-    };
+    const { user, setUser } = useContext(UserContext);
+    
+    const handleLogoff = (event) => {
+        event.preventDefault();
+        localStorage.removeItem("user");
+        setUser(null);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        navigate("/login");
+      };
+      
 
     const totalStock = brownieData.reduce((total, item) => total + item.stock, 0);
+
 
     return (
         <div className="profile-admin-wrapper">
@@ -107,7 +192,7 @@ const ProfileAdmin = () => {
                     }
                 />
             </div>
-            <div className="profile-search-wrapper">
+            <div className="profile-search-wrapper centered-content">
                 <SearchBar
                     searchQuery={query}
                     handleSearch={handleInputChange}
@@ -145,39 +230,37 @@ const ProfileAdmin = () => {
                                         </div>
                                         <div className="user-management-info centered-content">
                                             <div className="user-info-edit centered-content">
-                                                <PausaTextField
-                                                    value={selectedUser.name}
-                                                    label={"Nome"}
-                                                    disabled={"true"}
-                                                    handleChange={handleChange}
+                                            <PausaTextField
+                                                label={"Nome: " + selectedUser.name}
+                                                handleChange={handleChange}
+                                                name="name"
+                                            />
+                                            </div>
+                                            <div className="user-info-edit centered-content">
+                                            <PausaTextField
+                                                label={"E-mail: " + selectedUser.email}
+                                                handleChange={handleChange}
+                                                name="email"
                                                 />
                                             </div>
                                             <div className="user-info-edit centered-content">
-                                                <PausaTextField
-                                                    value={selectedUser.email}
-                                                    label={"E-mail"}
-                                                    disabled={"true"}
-                                                    handleChange={handleChange}
-                                                />
-                                            </div>
-                                            <div className="user-info-edit centered-content">
-                                                <PausaTextField
-                                                    value={selectedUser.phone}
-                                                    label={"Telefone"}
-                                                    disabled={"true"}
-                                                    handleChange={handleChange}
+                                            <PausaTextField
+                                                label={"Telefone: " + selectedUser.phone}
+                                                handleChange={handleChange}
+                                                name="phone"
                                                 />
                                             </div>
                                             <div className="user-management-buttons centered-content">
-                                                <div className="user-management-button edit">
-                                                    <PausaButton
-                                                        buttonText={"Editar"}
-                                                        onclick={handleEditClick}
-                                                    />
-                                                </div>
                                                 <div className="user-management-button delete">
                                                     <PausaButton
                                                         buttonText={"Excluir"}
+                                                        onClick={() => handleDelete(selectedUser)}
+                                                    />
+                                                </div>
+                                                <div className="user-management-button save">
+                                                <PausaButton
+                                                    buttonText={"Salvar"}
+                                                    onClick={handleEditUser}
                                                     />
                                                 </div>
 
@@ -202,37 +285,40 @@ const ProfileAdmin = () => {
                 />
             </div>
             <div className="product-show-wrapper">
-                {searchResults.length > 0 && !selectedBrownie && (
-                <div className="products-results-wrapper centered-content">
+                {searchQuery === '' && !selectedBrownie && (
+                    <div className="products-results-wrapper centered-content">
                     <div className="search-title shaded-text">
                         Resultados da busca (clique no produto para gerenciar):
                     </div>
-                     <ul>
-                        {searchResults.map((item) => (
-                            <li className="search-result" key={item.id} onClick={() => handleBrownieClick(item)}>
-                                {item.name}
-                            </li>
+                    <ul>
+                        {brownieData.map((item) => (
+                        <li className="search-result" key={item.id} onClick={() => handleBrownieClick(item)}>
+                            {item.name}
+                        </li>
                         ))}
                     </ul>
-                </div>
-            )}
-
-            {selectedBrownie && (
-                    <div className="selected-produt-wrapper">
-                        <ProductMainCard
-                            name={selectedBrownie.name}
-                            price={selectedBrownie.price}
-                            keywords={selectedBrownie.keywords.join(", ")}
-                            button1={"Adicionar ao carrinho"}
-                            button2={"Ver Detalhes"}
-                        />
                     </div>
                 )}
 
-            {searchResults.length === 0 && !selectedBrownie && (
-                <p></p>
-            )}
-            </div>
+                {selectedBrownie && (
+                    <div className="selected-produt-wrapper">
+                    <ProductMainCard
+                        name={selectedBrownie.name}
+                        price={selectedBrownie.price}
+                        keywords={selectedBrownie.keywords.join(", ")}
+                        button={"Editar Brownie"}
+                        toInfo={`/description/${selectedBrownie.id}`}
+                        to={`/edit/${selectedBrownie.id}`}
+
+                    />
+                    </div>
+                )}
+
+                {searchQuery !== '' && searchResults.length === 0 && !selectedBrownie && (
+                    <p></p>
+                )}
+                </div>
+
 
             <div className="report-wrapper">
                 <InfoCard
@@ -254,6 +340,13 @@ const ProfileAdmin = () => {
 
                         </div>
                     }
+                />
+            </div>
+
+            <div className="logoff-admin centered-content">
+                <PausaButton
+                    buttonText={"Logoff"}
+                    onClick={handleLogoff}
                 />
             </div>
 

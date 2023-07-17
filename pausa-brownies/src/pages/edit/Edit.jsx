@@ -1,106 +1,188 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import "./Edit.css";
 import InfoCard from "../components/InfoCards/InfoCard";
 import { ReactComponent as RealBrownie } from "../profilea/assets/RealBrownie.svg";
+import brownieData from "../../mock/brownieData.json";
 import PausaButton from "../components/Buttons/PausaButton/PausaButton";
-import PausaTextField from "../components/TextField/PausaTextField"
+import PausaTextField from "../components/TextField/PausaTextField";
 
 const Edit = () => {
-    return (
-        <div className="edit-wrapper">
-            <InfoCard
-                header={"Produto X"}
-                body={
-                    <div className="product-edit-wrapper centered-content">
-                        <div className="product-edit-content centered-content">
-                            <div className="product-edit-image centered-content">
-                                <RealBrownie />
-                            </div>
-                            <div className="product-edit-info-wrapper">
-                                <InfoCard
-                                    header={"Descrição"}
-                                    body={
-                                        <div className="product-edit-info">
-                                            <div className="edit-name centered-content">
-                                                <PausaTextField
-                                                    name={"name"}
-                                                    value={"Produto X"}
-                                                    label={"Nome do Produto:"}
-                                                    placeholder={"Nome do Produto"}
-                                                    inputType={"text"}
-                                                    handleChange={() => { }}
-                                                    disabled={false}
-                                                />
-                                            </div>
-                                            <div className="edit-price centered-content">
-                                                <PausaTextField
-                                                    name={"price"}
-                                                    value={"R$ 10,00"}
-                                                    label={"Preço:"}
-                                                    placeholder={"Preço"}
-                                                    inputType={"text"}
-                                                    handleChange={() => { }}
-                                                    disabled={false}
-                                                />
-                                            </div>
-                                            <div className="edit-ingredients centered-content">
-                                                <PausaTextField
-                                                    name={"ingredients"}
-                                                    value={"Ingredientes"}
-                                                    label={"Ingredientes:"}
-                                                    placeholder={"Ingredientes"}
-                                                    inputType={"text"}
-                                                    handleChange={() => { }}
-                                                    disabled={false}
-                                                />
-                                            </div>
-                                            <div className="edit-stock centered-content">
-                                                <PausaTextField
-                                                    name={"stock"}
-                                                    value={11}
-                                                    label={"Estoque:"}
-                                                    placeholder={"Estoque"}
-                                                    inputType={"number"}
-                                                    handleChange={() => { }}
-                                                    disabled={false}
-                                                />
-                                            </div>
-                                            <div className="edit-friends centered-content">
-                                                <PausaTextField
-                                                    name={"friends"}
-                                                    value={"Refrigerante, Café"}
-                                                    label={"Vai bem com:"}
-                                                    placeholder={"Refrigerante, Café"}
-                                                    inputType={"text"}
-                                                    handleChange={() => { }}
-                                                    disabled={false}
-                                                />
-                                            </div>
-                                        </div>
-                                    }
-                                />
-                            </div>
-                            <div className="edit-buttons">
-                                <div className="edit">
-                                <PausaButton 
-                                    buttonText={"Editar Produto"}
-                                />
-                                </div>
+  const { id } = useParams();
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [ingredients, setIngredients] = useState("");
+  const [stock, setStock] = useState("");
+  const [vaiBemCom, setVaiBemCom] = useState("");
 
-                                <div className="delete">
-                                <PausaButton 
-                                    buttonText={"Excluir Produto"}
-                                />
-                                </div>
-                            </div>
-                        </div>
-                        </div>
+  const item = brownieData.find((brownie) => brownie.id.toString() === id);
 
-                }
-            />
-        </div>
+  useEffect(() => {
+    const storedData = localStorage.getItem("brownieData");
+    if (storedData) {
+      const brownies = JSON.parse(storedData);
+      const existingBrownie = brownies.find((brownie) => brownie.id === item.id);
+      if (existingBrownie) {
+        setName(existingBrownie.name);
+        setPrice(existingBrownie.price.toString());
+        setIngredients(existingBrownie.ingredients.join(", "));
+        setStock(existingBrownie.stock.toString());
+        setVaiBemCom(existingBrownie.vaiBemCom.join(", "));
+      }
+    }
+  }, [item]);
 
-    );
-}
+  const handleSave = () => {
+    if (!name || !price || !ingredients || !stock || !vaiBemCom) {
+      const storedData = localStorage.getItem("brownieData");
+      const brownies = storedData ? JSON.parse(storedData) : [];
+  
+      const existingBrownie = brownies.find((brownie) => brownie.id === item.id);
+  
+      const editedData = {
+        id: item.id,
+        name: name || existingBrownie?.name || "",
+        price: parseFloat(price) || existingBrownie?.price || 0,
+        keywords: item.keywords,
+        ingredients: ingredients
+          ? ingredients.split(",").map((ingredient) => ingredient.trim())
+          : existingBrownie?.ingredients || [],
+        vaiBemCom: vaiBemCom
+          ? vaiBemCom.split(",").map((item) => item.trim())
+          : existingBrownie?.vaiBemCom || [],
+        stock: parseInt(stock) || existingBrownie?.stock || 0,
+      };
+  
+      const index = brownies.findIndex((brownie) => brownie.id === item.id);
+      if (index !== -1) {
+        brownies[index] = editedData;
+      } else {
+        brownies.push(editedData);
+      }
+  
+      localStorage.setItem("brownieData", JSON.stringify(brownies));
+  
+      alert("Brownie data saved successfully!");
+    } else {
+      const editedData = {
+        id: item.id,
+        name: name,
+        price: parseFloat(price),
+        keywords: item.keywords,
+        ingredients: ingredients.split(",").map((ingredient) => ingredient.trim()),
+        vaiBemCom: vaiBemCom.split(",").map((item) => item.trim()),
+        stock: parseInt(stock),
+      };
+  
+      const storedData = localStorage.getItem("brownieData");
+      let brownies = storedData ? JSON.parse(storedData) : [];
+  
+      const index = brownies.findIndex((brownie) => brownie.id === item.id);
+  
+      if (index !== -1) {
+        brownies[index] = editedData;
+      } else {
+        brownies.push(editedData);
+      }
+  
+      localStorage.setItem("brownieData", JSON.stringify(brownies));
+  
+      alert("Brownie data saved successfully!");
+    }
+  };
+  
+
+  const headerName = item && !name ? item.name : name; 
+  
+  return (
+    <div className="edit-wrapper">
+      <InfoCard
+        header={headerName}
+        body={
+          <div className="product-edit-wrapper centered-content">
+            <div className="product-edit-content centered-content">
+              <div className="product-edit-image centered-content">
+                <RealBrownie />
+              </div>
+              <div className="product-edit-info-wrapper">
+                <InfoCard
+                  header={"Edição de Produto"}
+                  body={
+                    <div className="product-edit-info">
+                      <div className="edit-name centered-content">
+                        <PausaTextField
+                          name={"name"}
+                          label={"Nome do Produto:"}
+                          placeholder={"Nome do Produto"}
+                          inputType={"text"}
+                          value={name}
+                          handleChange={(e) => setName(e.target.value)}
+                          disabled={false}
+                        />
+                      </div>
+                      <div className="edit-price centered-content">
+                        <PausaTextField
+                          name={"price"}
+                          label={"Preço:"}
+                          placeholder={"Preço"}
+                          inputType={"text"}
+                          value={price}
+                          handleChange={(e) => setPrice(e.target.value)}
+                          disabled={false}
+                        />
+                      </div>
+                      <div className="edit-ingredients centered-content">
+                        <PausaTextField
+                          name={"ingredients"}
+                          label={"Ingredientes:"}
+                          placeholder={"Ingredientes"}
+                          inputType={"text"}
+                          value={ingredients}
+                          handleChange={(e) => setIngredients(e.target.value)}
+                          disabled={false}
+                        />
+                      </div>
+                      <div className="edit-stock centered-content">
+                        <PausaTextField
+                          name={"stock"}
+                          label={"Estoque:"}
+                          placeholder={"Estoque"}
+                          inputType={"number"}
+                          value={stock}
+                          handleChange={(e) => setStock(e.target.value)}
+                          disabled={false}
+                        />
+                      </div>
+                      <div className="edit-friends centered-content">
+                        <PausaTextField
+                          name={"friends"}
+                          label={"Vai bem com:"}
+                          placeholder={"Refrigerante, Café"}
+                          inputType={"text"}
+                          value={vaiBemCom}
+                          handleChange={(e) => setVaiBemCom(e.target.value)}
+                          disabled={false}
+                        />
+                      </div>
+                    </div>
+                  }
+                />
+              </div>
+              <div className="edit-buttons">
+                <div className="edit">
+                  <PausaButton buttonText={"Editar Produto"} onClick={handleSave} />
+                </div>
+
+                <div className="delete">
+                  <PausaButton buttonText={"Excluir Produto"} />
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+      />
+    </div>
+  );
+};
 
 export default Edit;

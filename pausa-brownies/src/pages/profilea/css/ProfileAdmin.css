@@ -159,9 +159,9 @@
     flex-direction: column;
     width: 100%
 }
-
+ 
 .search-bar-products {
-    margin: 1vw;
+    margin-top: 1vw;
 }
 
 .products-results-wrapper {
@@ -185,3 +185,5 @@
     transform: scale(1.5);
     color: #B86E4C
   }
+
+  
