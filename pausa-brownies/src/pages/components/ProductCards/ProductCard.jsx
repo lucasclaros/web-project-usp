@@ -48,6 +48,7 @@ const ProductCard = ({ button, name, price, keywords, to, onClick, quantity = 1,
               <AddProduct onClick={handleAddProduct} />
             </div>
             <div className="cart-quantity-container">{quantity}</div>
+            <div className="cart-stock-container">[{quantity} em estoque]</div>
           </div>
 
           <div className="product-button">
