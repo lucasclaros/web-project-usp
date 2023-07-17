@@ -7,7 +7,7 @@ import { useMediaQuery } from "@uidotdev/usehooks";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-const ProductMainCard = ({ button, name, price, keywords, to, toInfo, onClick, quantity, onQuantityChange }) => {
+const ProductMainCard = ({ button, name, price, keywords, to, toInfo, onClick, quantity = 1, onQuantityChange }) => {
   const isMobile = useMediaQuery("(max-width: 960px)");
 
   const handleQuantityChange = (newQuantity) => {

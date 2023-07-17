@@ -1,0 +1,24 @@
+.shop-history-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    border-radius: 16px 16px 0 0;
+    border: 1px solid black;
+    padding: 1vh 1vw;
+    width: 50vw;
+    text-align: justify;
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+}
+
+.shop-history-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 0 0 16px 16px;
+    border: 1px solid black;
+    padding: 1vh 1vw;
+    width: 50vw;
+    text-align: justify;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+}

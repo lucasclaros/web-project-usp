@@ -6,6 +6,8 @@ import PausaButton from "../components/Buttons/PausaButton/PausaButton";
 import { ReactComponent as ProfileIcon } from "./assets/profileu.svg";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext";
+import ShopHistory from "../components/ShopHistory/ShopHistory";
+
 
 const formatPhoneNumber = (phoneNumber) => {
   const digitsOnly = phoneNumber.replace(/\D/g, "");
@@ -78,6 +80,10 @@ const ProfileUser = () => {
                 />
               </div>
             </div>
+            <div className="profile-history">
+              <ShopHistory />
+            </div>
+
           </div>
         }
       />

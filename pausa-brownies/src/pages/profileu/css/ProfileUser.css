@@ -5,6 +5,8 @@
 }
 
 .profile-content-wrapper {
+    flex-direction: column;
+    display: flex;
     margin: 40px;
 }
 

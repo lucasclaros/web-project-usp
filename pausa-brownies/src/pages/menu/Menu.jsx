@@ -58,18 +58,37 @@ const Menu = () => {
 
   const addToCart = (item, quantity) => {
     const existingCartItemIndex = cart.findIndex((cartItem) => cartItem.item.id === item.id);
-
-    if (existingCartItemIndex !== -1) {
-      const updatedCart = [...cart];
-      updatedCart[existingCartItemIndex].quantity += quantity;
-      setCart(updatedCart);
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
-    } else {
-      const updatedCart = [...cart, { item, quantity }];
-      setCart(updatedCart);
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    const availableStock = item.stock - (productQuantities[item.id] || 0);
+  
+    if (availableStock <= 0) {
+      alert("No stock available for this item.");
+      return;
     }
+  
+    const updatedCart = [...cart];
+  
+    if (existingCartItemIndex !== -1) {
+      const updatedQuantity = updatedCart[existingCartItemIndex].quantity + quantity;
+      if (updatedQuantity > availableStock) {
+        alert("Cannot add more items than available stock.");
+        return;
+      }
+  
+      updatedCart[existingCartItemIndex].quantity = updatedQuantity;
+    } else {
+      if (quantity > availableStock) {
+        alert("Cannot add more items than available stock.");
+        return;
+      }
+  
+      updatedCart.push({ item, quantity });
+    }
+  
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
+  
+  
 
   const handleQuantityChange = (productId, newQuantity) => {
     setProductQuantities((prevQuantities) => ({
@@ -98,7 +117,7 @@ const Menu = () => {
                 button={"Adicionar ao carrinho"}
                 toInfo={`/description/${item.id}`}
                 onClick={() => addToCart(item, productQuantities[item.id] || 1)}
-                quantity={productQuantities[item.id] || 0}
+                quantity={productQuantities[item.id] || 1}
                 onQuantityChange={(newQuantity) =>
                   handleQuantityChange(item.id, newQuantity)
                 }

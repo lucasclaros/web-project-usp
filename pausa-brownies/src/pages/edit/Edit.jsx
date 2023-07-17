@@ -33,31 +33,64 @@ const Edit = () => {
   }, [item]);
 
   const handleSave = () => {
-    const editedData = {
-      id: item.id,
-      name: name,
-      price: parseFloat(price),
-      keywords: item.keywords,
-      ingredients: ingredients.split(",").map((ingredient) => ingredient.trim()),
-      vaiBemCom: vaiBemCom.split(",").map((item) => item.trim()),
-      stock: parseInt(stock),
-    };
-
-    const storedData = localStorage.getItem("brownieData");
-    let brownies = storedData ? JSON.parse(storedData) : [];
-
-    const index = brownies.findIndex((brownie) => brownie.id === item.id);
-
-    if (index !== -1) {
-      brownies[index] = editedData;
+    if (!name || !price || !ingredients || !stock || !vaiBemCom) {
+      const storedData = localStorage.getItem("brownieData");
+      const brownies = storedData ? JSON.parse(storedData) : [];
+  
+      const existingBrownie = brownies.find((brownie) => brownie.id === item.id);
+  
+      const editedData = {
+        id: item.id,
+        name: name || existingBrownie?.name || "",
+        price: parseFloat(price) || existingBrownie?.price || 0,
+        keywords: item.keywords,
+        ingredients: ingredients
+          ? ingredients.split(",").map((ingredient) => ingredient.trim())
+          : existingBrownie?.ingredients || [],
+        vaiBemCom: vaiBemCom
+          ? vaiBemCom.split(",").map((item) => item.trim())
+          : existingBrownie?.vaiBemCom || [],
+        stock: parseInt(stock) || existingBrownie?.stock || 0,
+      };
+  
+      const index = brownies.findIndex((brownie) => brownie.id === item.id);
+      if (index !== -1) {
+        brownies[index] = editedData;
+      } else {
+        brownies.push(editedData);
+      }
+  
+      localStorage.setItem("brownieData", JSON.stringify(brownies));
+  
+      alert("Brownie data saved successfully!");
     } else {
-      brownies.push(editedData);
+      const editedData = {
+        id: item.id,
+        name: name,
+        price: parseFloat(price),
+        keywords: item.keywords,
+        ingredients: ingredients.split(",").map((ingredient) => ingredient.trim()),
+        vaiBemCom: vaiBemCom.split(",").map((item) => item.trim()),
+        stock: parseInt(stock),
+      };
+  
+      const storedData = localStorage.getItem("brownieData");
+      let brownies = storedData ? JSON.parse(storedData) : [];
+  
+      const index = brownies.findIndex((brownie) => brownie.id === item.id);
+  
+      if (index !== -1) {
+        brownies[index] = editedData;
+      } else {
+        brownies.push(editedData);
+      }
+  
+      localStorage.setItem("brownieData", JSON.stringify(brownies));
+  
+      alert("Brownie data saved successfully!");
     }
-
-    localStorage.setItem("brownieData", JSON.stringify(brownies));
-
-    alert("Brownie data saved successfully!");
   };
+  
 
   const headerName = item && !name ? item.name : name; 
   

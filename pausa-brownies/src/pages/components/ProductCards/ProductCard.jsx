@@ -5,7 +5,7 @@ import { ReactComponent as ShoppingCart } from "./assets/shopping-cart.svg";
 import { ReactComponent as AddProduct } from "./assets/plus-sign.svg";
 import { ReactComponent as RemoveProduct } from "./assets/minus-sign.svg";
 
-const ProductCard = ({ button, name, price, keywords, to, onClick, quantity, onQuantityChange }) => {
+const ProductCard = ({ button, name, price, keywords, to, onClick, quantity = 1, onQuantityChange }) => {
   const formattedPrice = price.toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL",
@@ -16,7 +16,7 @@ const ProductCard = ({ button, name, price, keywords, to, onClick, quantity, onQ
   };
 
   const handleRemoveProduct = () => {
-    if (quantity > 0) {
+    if (quantity > 1) {
       onQuantityChange(quantity - 1);
     }
   };
