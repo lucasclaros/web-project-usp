@@ -3,16 +3,10 @@ const app = express();
 const db = require('./db');
 
 
-
 // Importar as rotas
 const usersRouter = require('./routes/users');
 
 app.use(express.json());
-
-// Rota principal
-app.get('/', (req, res) => {
-  res.send('Tá funcionando desgraça');
-});
 
 // Configurar as rotas
 app.use('/users', usersRouter);
